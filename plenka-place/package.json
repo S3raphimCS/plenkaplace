@@ -7,8 +7,10 @@
     "dev": "next dev",
     "turbo": "next dev --turbo",
     "build": "next build",
+    "prod-build": "next build && npm run obfuscate-build",
     "start": "next start",
     "lint": "next lint",
+    "obfuscate-build": "next-css-obfuscator",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore ."
   },
@@ -30,6 +32,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
+    "next-css-obfuscator": "^2.2.19",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
