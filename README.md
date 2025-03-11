@@ -14,21 +14,21 @@
 
 Пример .env файла указан в .env.example:
 
-| Ключ                | Значение               | По умолчанию             |
-|---------------------|------------------------|--------------------------|
-| `SECRET_KEY`        | Секретный ключ         | `the-most-secret-key`    |
-| `DEBUG`             | Режим дебага           | `True`                   |
-| `POSTGRES_DB`       | Имя БД                 | `plenkaplace`            |
-| `POSTGRES_USER`     | Пользователь БД        | `postgres`               |
-| `POSTGRES_PASSWORD` | Пароль пользователя БД | `postgres`               |
-| `POSTGRES_HOST`     | Адрес СУБД             | `db`/`localhost`         |
-| `POSTGRES_PORT`     | Порт СУБД              | `5432`                   |
-| `SITE_URL`          | Домен сайта            |                          |
-| `BOT_TOKEN`         | Токен ТГ-бота          |                          |
-| `STATIC_PATH`       |                        | `/project/server/static` | 
-| `MEDIA_PATH`        |                        | `/project/server/media`  | 
-| `APP_PROXY_PORT`    |                        | `8000`                   | 
-| `APP_PROXY_LINK`    |                        | `app`                    | 
+| Ключ                | Значение                           | По умолчанию             |
+|---------------------|------------------------------------|--------------------------|
+| `SECRET_KEY`        | Секретный ключ                     | `the-most-secret-key`    |
+| `DEBUG`             | Режим дебага                       | `True`                   |
+| `POSTGRES_DB`       | Имя БД                             | `plenkaplace`            |
+| `POSTGRES_USER`     | Пользователь БД                    | `postgres`               |
+| `POSTGRES_PASSWORD` | Пароль пользователя БД             | `postgres`               |
+| `POSTGRES_HOST`     | Адрес СУБД                         | `db`/`localhost`         |
+| `POSTGRES_PORT`     | Порт СУБД                          | `5432`                   |
+| `SITE_URL`          | Домен сайта                        |                          |
+| `BOT_TOKEN`         | Токен ТГ-бота                      |                          |
+| `STATIC_PATH`       | Путь до статических файлов         | `/project/server/static` | 
+| `MEDIA_PATH`        | Путь до медиа файлов               | `/project/server/media`  | 
+| `APP_PROXY_PORT`    | Порт контейнера с бэкендом         | `8000`                   | 
+| `APP_PROXY_LINK`    | Наименование контейнера с бэкендом | `app`                    | 
 
 **Локальный разворот проекта**:
 
