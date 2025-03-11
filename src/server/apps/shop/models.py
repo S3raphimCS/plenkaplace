@@ -8,8 +8,8 @@ from server.apps.shop.enums import ContactPreferenceChoices, PaymentMethodChoice
 class DeliveryMethod(models.Model):
     """Модель способа доставки."""
 
-    title = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True)
+    title = models.CharField(max_length=100, unique=True, verbose_name='Название')
+    description = models.TextField(blank=True, verbose_name='Описание')
 
     class Meta:
         verbose_name = 'Способ доставки'
@@ -85,7 +85,7 @@ class Order(models.Model):
         return sum(item.quantity * item.product.price for item in self.items.all())
 
     def __str__(self):
-        return f"{self.id} - {self.first_name}, {self.phone}, {datetime.strftime(self.created_at, format="%d-%m-%Y %H:%M")}, {self.total_price} руб."
+        return f"{self.id} - {self.first_name}, {self.phone}, {self.total_price} руб."
 
     class Meta:
         verbose_name = 'Заказ'

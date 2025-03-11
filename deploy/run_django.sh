@@ -10,6 +10,4 @@ python "manage.py" create_delivery_methods
 
 python "manage.py" create_product_types
 
-django-admin compilemessages
-
 gunicorn -c "$PROJECT_ROOT/gunicorn.conf.py" server.wsgi:application

@@ -136,14 +136,14 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-# REST_FRAMEWORK = {
-#     "DEFAULT_THROTTLE_CLASSES": [
-#         'server.api.v1.core.throttling.base.SustainedRateThrottle'
-#     ],
-#     "DEFAULT_THROTTLE_RATES": {
-#         "sustained": "3/hour"
-#     }
-# }
+REST_FRAMEWORK = {
+    "DEFAULT_THROTTLE_CLASSES": [
+        'rest_framework.throttling.ScopedRateThrottle'
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "order.create": "3/hour"
+    }
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

@@ -45,3 +45,8 @@ class ProductViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, GenericVi
 class OrderViewSet(mixins.CreateModelMixin, GenericViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+    def get_throttles(self):
+        if self.action == 'create':
+            self.throttle_scope = 'order.create'
+        return super().get_throttles()
