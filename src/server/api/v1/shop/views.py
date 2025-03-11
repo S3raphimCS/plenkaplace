@@ -38,7 +38,7 @@ class ProductViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, GenericVi
         if getattr(self, 'swagger_fake_view', False):
             return self.queryset.none()
 
-        qs = self.queryset.all()
+        qs = self.queryset.prefetch_related('images').all()
         return qs
 
 

@@ -11,7 +11,7 @@ API_TITLE = "PlenkaPlace"
 schema_view_v1 = get_schema_view(
     openapi.Info(title=API_TITLE, default_version='v1'),
     public=True,
-    permission_classes=[permissions.AllowAny,],
+    permission_classes=[permissions.IsAdminUser,],
     patterns=[
         path('api/v1/', include(urls_v1.urlpatterns))
     ],

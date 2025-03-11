@@ -4,4 +4,4 @@ from server.api.v1.articles.views import ArticleSiteViewSet
 
 
 router = DefaultRouter()
-router.register('articles', ArticleSiteViewSet, basename='articles')
+router.register('', ArticleSiteViewSet, basename='articles')

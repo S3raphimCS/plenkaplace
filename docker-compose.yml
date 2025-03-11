@@ -39,6 +39,8 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+      - ./media_volume:/project/server/media/
+      - ./static_volume:/project/server/static/
 
   db:
     image: postgres:14-alpine

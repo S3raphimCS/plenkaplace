@@ -23,6 +23,7 @@ SECRET_KEY = config("SECRET_KEY", default="set_me_in_prod")
 DEBUG = config("DEBUG", default=True)
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost", "https://localhost"]
 
 # Application definition
 

@@ -4,4 +4,4 @@ from server.api.v1.flatpages.views import FlatPagesViewSet
 
 
 router = DefaultRouter()
-router.register("flatpages", FlatPagesViewSet, basename="flatpages")
+router.register("", FlatPagesViewSet, basename="flatpages")
