@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django_filters",
     "django_cleanup",
     "corsheaders",
+    "ckeditor",
 
     "server.apps.articles",
     "server.apps.news",
@@ -129,6 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# CKEDITOR_BASEPATH = 'static/ckeditor/ckeditor/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 

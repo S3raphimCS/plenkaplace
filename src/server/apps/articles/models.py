@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 from server.apps.articles.managers import ArticlePublishedManager
@@ -7,7 +8,7 @@ class Article(models.Model):
     """Модель статьи."""
 
     title = models.CharField(max_length=255, verbose_name="Название статьи")
-    text = models.TextField(verbose_name="Текст статьи")
+    text = RichTextField(verbose_name="Текст статьи")
     preview = models.ImageField(verbose_name="Превью", upload_to='articles/previews/%Y/%m/%d', null=True, blank=True)
     is_published = models.BooleanField(default=False, verbose_name="Статус статьи")
     published_date = models.DateTimeField(verbose_name="Дата публикации статьи", auto_now_add=True, null=True, blank=True)

@@ -12,6 +12,10 @@ class ProductFilter(filters.FilterSet):
         field_name="title",
         lookup_expr="in"
     )
+    brand = CharFilterInFilter(
+        field_name="brand__id",
+        lookup_expr="in",
+    )
     product_type = filters.CharFilter(field_name="product_type__title")
     is_available_for_purchasing = filters.BooleanFilter(field_name="is_available_for_purchasing")
     price = filters.RangeFilter(field_name="price")

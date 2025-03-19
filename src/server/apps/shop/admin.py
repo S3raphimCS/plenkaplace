@@ -7,6 +7,8 @@ from server.apps.shop.models import (
     Product,
     ProductImage,
     ProductType,
+    PromoCode,
+    Brand
 )
 
 
@@ -22,7 +24,7 @@ class ProductItemInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("title", "price", "is_available")
+    list_display = ("title", "brand", "price", "is_available")
     list_editable = ("price", "is_available")
     inlines = [ProductItemInline]
 
@@ -54,4 +56,14 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(PromoCode)
+class PromoCodeAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
     pass

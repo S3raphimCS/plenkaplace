@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 from server.apps.news import managers
@@ -10,7 +11,7 @@ class News(models.Model):
     is_published = models.BooleanField(default=False, verbose_name="Опубликовано")
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     preview = models.ImageField(upload_to='news/previews/%Y/%m/%d', verbose_name="Превью новости", null=True, blank=True)
-    text = models.TextField(verbose_name="Текст новости")
+    text = RichTextField(verbose_name="Текст новости")
 
     objects = models.Manager()
     published_objects = managers.NewsPublishedManager()

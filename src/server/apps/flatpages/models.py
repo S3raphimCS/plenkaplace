@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from rest_framework.exceptions import ValidationError
 
@@ -11,7 +12,7 @@ class FlatPage(models.Model):
     description = models.CharField(
         max_length=255, verbose_name="Наименование"
     )
-    text = models.TextField(null=True, verbose_name="Текст")
+    text = RichTextField(null=True, verbose_name="Текст")
 
     class Meta:
         verbose_name = "Плоская страница"

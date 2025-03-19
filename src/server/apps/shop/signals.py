@@ -1,34 +1,23 @@
-from lib2to3.fixes.fix_input import context
-
-from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from slugify import slugify
 
-from server.apps.shop.models import Order
+from server.apps.shop.models import Product
 
 
-class IncreaseMaxEmployeeRequestListener:
+class ProductUpdateListener:
 
     @classmethod
     def register(cls):
-        post_save.connect(cls.mail_after_order_creating, sender=Order)
+        pre_save.connect(cls.create_product_slug, sender=Product)
 
-
-    @staticmethod
-    @receiver(post_save, sender=Order)
-    def mail_after_order_creating(sender, instance, **kwargs):
-        """Отправляет уведомление на почту, если создан новый заказ."""
-        if instance.pk is None:
-            return
-        try:
-            old_instance = sender.objects.get(pk=instance.pk)
-        except sender.DoesNotExist:
-            context = {
-                'order_id': instance.id,
-                'first_name': instance.first_name,
-                'phone': instance.phone,
-                'email': instance.email,
-                'address': instance.address,
-                'comment': instance.comment,
-            }
-            return
-
+    @receiver(pre_save, sender=Product)
+    def create_product_slug(sender, instance, **kwargs):
+        if not instance.slug:
+            slug = slugify(instance.title)
+            unique_slug = slug
+            num = 1
+            while Product.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{slug}-{num}"
+                num += 1
+            instance.slug = unique_slug

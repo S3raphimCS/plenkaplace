@@ -31,3 +31,10 @@ class DeliveryMethodChoices(models.TextChoices):
     VDK_DELIVERY = "VDK delivery", "Доставка по Владивостоку"
     POST = "post", "Доставка почтой России"
     SDEK = "sdek", "Доставка СДЭК"
+
+
+class PromoCodeTypeChoices(models.TextChoices):
+    """Тип промокода"""
+
+    percentage = "percentage", "Процентный"
+    fixed_amount = "fixed", "Фиксированное значение"
