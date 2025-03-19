@@ -1,5 +1,5 @@
-from django.dispatch import receiver
 from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from slugify import slugify
 
 from server.apps.shop.models import Product

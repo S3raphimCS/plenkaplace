@@ -11,15 +11,21 @@ from rest_framework.viewsets import GenericViewSet, ViewSet
 from server.api.v1.core.pagination.base import StandardPagePagination
 from server.api.v1.shop.filters import ProductFilter
 from server.api.v1.shop.serializers import (
+    BrandSerializer,
     DeliveryMethodSerializer,
     OrderSerializer,
     ProductSerializer,
     ProductTypeSerializer,
-    BrandSerializer
+    PromoCodeCheckSerializer,
 )
-from server.apps.shop.models import DeliveryMethod, Order, Product, ProductType, PromoCode, Brand
-
-from server.api.v1.shop.serializers import PromoCodeSerializer, PromoCodeCheckSerializer
+from server.apps.shop.models import (
+    Brand,
+    DeliveryMethod,
+    Order,
+    Product,
+    ProductType,
+    PromoCode,
+)
 
 
 class DeliveryMethodViewSet(mixins.ListModelMixin, GenericViewSet):

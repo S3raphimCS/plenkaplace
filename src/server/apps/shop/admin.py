@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from server.apps.shop.models import (
+    Brand,
     DeliveryMethod,
     Order,
     OrderItem,
@@ -8,7 +9,6 @@ from server.apps.shop.models import (
     ProductImage,
     ProductType,
     PromoCode,
-    Brand
 )
 
 

@@ -1,8 +1,10 @@
-from datetime import datetime
-
 from django.db import models
 
-from server.apps.shop.enums import ContactPreferenceChoices, PaymentMethodChoices, PromoCodeTypeChoices
+from server.apps.shop.enums import (
+    ContactPreferenceChoices,
+    PaymentMethodChoices,
+    PromoCodeTypeChoices,
+)
 
 
 class Brand(models.Model):
@@ -118,7 +120,7 @@ class Order(models.Model):
         verbose_name='Сумма скидки', default=0
     )
 
-
+    # flake8:noqa
     @property
     def total_price(self):
         return sum(item.quantity * item.product.price for item in self.items.all()) - self.discount_amount

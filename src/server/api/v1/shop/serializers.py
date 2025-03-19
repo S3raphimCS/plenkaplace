@@ -4,9 +4,10 @@ from rest_framework import serializers
 from server.apps.shop.enums import (
     ContactPreferenceChoices,
     PaymentMethodChoices,
-    PromoCodeTypeChoices
+    PromoCodeTypeChoices,
 )
 from server.apps.shop.models import (
+    Brand,
     DeliveryMethod,
     Order,
     OrderItem,
@@ -14,7 +15,6 @@ from server.apps.shop.models import (
     ProductImage,
     ProductType,
     PromoCode,
-    Brand
 )
 
 

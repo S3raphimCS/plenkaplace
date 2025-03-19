@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Optional
 
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
@@ -43,4 +43,3 @@ class Email(EmailMultiAlternatives):
 
         sent_sum = super().send(fail_silently=fail_silently)
         return sent_sum
-
