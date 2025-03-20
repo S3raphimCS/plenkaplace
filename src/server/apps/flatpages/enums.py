@@ -5,5 +5,4 @@ class FlatPageTitle(TextChoices):
     """Значения заголовка простой страницы."""
 
     PRIVACY_POLICY = "privacy_policy", "Политика конфиденциальности"
-    COOKIE_POLICY = "cookie_policy", "Правила использования cookie"
     USER_AGREEMENT = "user_agreement", "Пользовательское соглашение"

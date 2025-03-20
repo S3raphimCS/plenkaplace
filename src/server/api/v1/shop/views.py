@@ -17,6 +17,7 @@ from server.api.v1.shop.serializers import (
     ProductSerializer,
     ProductTypeSerializer,
     PromoCodeCheckSerializer,
+    FeedbackSerializer
 )
 from server.apps.shop.models import (
     Brand,
@@ -25,6 +26,7 @@ from server.apps.shop.models import (
     Product,
     ProductType,
     PromoCode,
+    Feedback
 )
 
 
@@ -109,3 +111,9 @@ class BrandViewSet(mixins.ListModelMixin, GenericViewSet):
     pagination_class = StandardPagePagination
     queryset = Brand.objects.all()
     serializer_class = BrandSerializer
+
+
+class FeedbackViewSet(mixins.ListModelMixin, GenericViewSet):
+    pagination_class = StandardPagePagination
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer

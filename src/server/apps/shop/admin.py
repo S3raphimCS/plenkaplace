@@ -9,6 +9,7 @@ from server.apps.shop.models import (
     ProductImage,
     ProductType,
     PromoCode,
+    Feedback
 )
 
 
@@ -66,4 +67,9 @@ class PromoCodeAdmin(admin.ModelAdmin):
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
     pass

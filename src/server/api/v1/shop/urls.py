@@ -7,6 +7,7 @@ from server.api.v1.shop.views import (
     ProductTypeViewSet,
     ProductViewSet,
     PromoCodeViewSet,
+    FeedbackViewSet
 )
 
 
@@ -17,3 +18,4 @@ router.register('orders', OrderViewSet, basename="orders")
 router.register('delivery-methods', DeliveryMethodViewSet, basename="delivery-methods")
 router.register('promo-codes', PromoCodeViewSet, basename="promo-codes")
 router.register('brands', BrandViewSet, basename='brands')
+router.register('feedbacks', FeedbackViewSet, basename='feedbacks')

@@ -15,6 +15,7 @@ from server.apps.shop.models import (
     ProductImage,
     ProductType,
     PromoCode,
+    Feedback
 )
 
 
@@ -152,3 +153,9 @@ class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
         fields = ("id", "title")
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = "__all__"
