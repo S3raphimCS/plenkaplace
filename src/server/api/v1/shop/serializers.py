@@ -138,15 +138,27 @@ class OrderSerializer(serializers.ModelSerializer):
 
 
 class PromoCodeSerializer(serializers.ModelSerializer):
+    valid_from = serializers.DateTimeField(format="%d-%m-%Y %H:%M")
+    valid_to = serializers.DateTimeField(format="%d-%m-%Y %H:%M")
+
     class Meta:
         model = PromoCode
-        fields = ("id", "title", "code", "discount_type", "discount_vale", "is_active", "valid_from", "valid_to")
+        fields = ("id", "title", "code", "discount_type", "discount_value",
+                  "max_discount", "is_active", "valid_from", "valid_to")
 
 
 class PromoCodeCheckSerializer(serializers.ModelSerializer):
     class Meta:
         model = PromoCode
         fields = ("code",)
+
+
+class PromoCodeOrderPriceSerializer(serializers.Serializer):
+    total_price = serializers.FloatField(label="Сумма заказа", read_only=True)
+    discount_value = serializers.FloatField(label="Скидка", read_only=True)
+    price_with_discount = serializers.FloatField(label="Сумма заказа с учетом скидки", read_only=True)
+    code = serializers.CharField(label="Промокод")
+    items = OrderItemSerializer(many=True)
 
 
 class BrandSerializer(serializers.ModelSerializer):

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "ckeditor",
 
     "server.apps.articles",
+    "server.apps.users",
     "server.apps.news",
     "server.apps.shop",
     "server.apps.flatpages"

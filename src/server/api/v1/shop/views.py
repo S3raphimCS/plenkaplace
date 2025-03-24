@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg import openapi
@@ -7,7 +9,6 @@ from rest_framework.decorators import action
 from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ViewSet
-
 from server.api.v1.core.pagination.base import StandardPagePagination
 from server.api.v1.shop.filters import ProductFilter
 from server.api.v1.shop.serializers import (
@@ -16,9 +17,12 @@ from server.api.v1.shop.serializers import (
     OrderSerializer,
     ProductSerializer,
     ProductTypeSerializer,
+    PromoCodeSerializer,
     PromoCodeCheckSerializer,
-    FeedbackSerializer
+    FeedbackSerializer,
+    PromoCodeOrderPriceSerializer
 )
+from server.apps.shop.enums import PromoCodeTypeChoices
 from server.apps.shop.models import (
     Brand,
     DeliveryMethod,
@@ -84,10 +88,11 @@ class OrderViewSet(mixins.CreateModelMixin, GenericViewSet):
 
 class PromoCodeViewSet(ViewSet):
     """Вьюсет проверки работоспособности промокода."""
+
     @swagger_auto_schema(
         request_body=PromoCodeCheckSerializer,
-        responses={200: openapi.Response("Промокод действителен", PromoCodeCheckSerializer),
-                   400: openapi.Response("Промокод недействителен или истек", PromoCodeCheckSerializer)}
+        responses={200: openapi.Response("Промокод действителен", PromoCodeSerializer),
+                   404: openapi.Response("Промокод недействителен или истек")}
     )
     @action(methods=['post'], detail=False)
     def check_promo_code(self, request):
@@ -100,9 +105,39 @@ class PromoCodeViewSet(ViewSet):
             valid_to__gte=timezone.now()
         )
         if promo:
-            return Response("Промокод действителен", 200)
+            return Response(PromoCodeSerializer(instance=promo.first()).data, 200)
         else:
-            return Response("Промокод недействителен или истек", 400)
+            return Response("Промокод недействителен или истек", 404)
+
+    @swagger_auto_schema(request_body=PromoCodeOrderPriceSerializer)
+    @action(methods=["post"], detail=False)
+    def get_order_price_with_promo(self, request):
+        """Получение стоимости заказа с учетом промокода."""
+        promo_code = request.data["code"]
+        promo = PromoCode.objects.filter(
+            code=promo_code,
+            is_active=True,
+            valid_from__lte=timezone.now(),
+            valid_to__gte=timezone.now()
+        ).first()
+        if not promo:
+            return Response("Промокод недействителен или истек", 404)
+        items_data = request.data.pop('items')
+        total_price = 0
+        for item in items_data:
+            product = Product.objects.filter(id=item["product"]).first()
+            if product:
+                total_price += int(product.price * item["quantity"])
+
+        if promo.discount_type == PromoCodeTypeChoices.fixed_amount:
+            discount_value = promo.discount_value
+        else:
+            discount_value = int(Decimal(total_price) / 100 * promo.discount_value)
+        if promo.max_discount:
+            if discount_value > promo.max_discount:
+                discount_value = promo.max_discount
+        return Response({"total_price": total_price, "discount_value": discount_value,
+                         "price_with_discount": total_price - discount_value})
 
 
 class BrandViewSet(mixins.ListModelMixin, GenericViewSet):

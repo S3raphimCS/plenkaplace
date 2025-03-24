@@ -27,6 +27,7 @@ class ProductItemInline(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("title", "brand", "price", "is_available")
     list_editable = ("price", "is_available")
+    search_fields = ("title",)
     inlines = [ProductItemInline]
 
 
