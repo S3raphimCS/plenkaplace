@@ -1,9 +1,0 @@
-export { Header } from './header/Header';
-export { CartSidebar } from './cart-sidebar/CartSidebar';
-export { FavouriteSidebar } from './favourite-sidebar/FavouriteSidebar';
-export { NavigationSidebar } from './navigation-sidebar/NavigationSidebar';
-export { FloatingButtons } from './floating-buttons/FloatingButtons';
-export { MainBanner } from './banners/MainBanner';
-export { ProductSection } from './grids/ProductSection';
-export { FeaturesWidget } from './grids/FeaturesWidget';
-export { AdBanner } from './banners/AdBanner';
