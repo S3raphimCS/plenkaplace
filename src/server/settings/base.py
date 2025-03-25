@@ -146,7 +146,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.ScopedRateThrottle'
     ],
     "DEFAULT_THROTTLE_RATES": {
-        "order.create": "3/hour"
+        "order.create": "3/hour",
+        "contact_request.create": "2/hour"
     }
 }
 
