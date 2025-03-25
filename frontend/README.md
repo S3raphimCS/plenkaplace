@@ -1,6 +1,6 @@
 # Frontend PlenkaPlace 📷
 
-![Logo](https://github.com/S3raphimCS/plenkaplace/tree/main/plenka-place/src/app/opengraph-image.png?raw=true)
+![Logo](https://github.com/S3raphimCS/plenkaplace/blob/main/frontend/src/app/opengraph-image.png)
 
 ## Технологический стек
 
