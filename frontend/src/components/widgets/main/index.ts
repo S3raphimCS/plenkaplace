@@ -1,0 +1,9 @@
+export { CartSidebar } from './cart-sidebar/CartSidebar';
+export { CatalogGridSection } from './catalog-grid/CatalogGridSection';
+export { FavouriteSidebar } from './favourite-sidebar/FavouriteSidebar';
+export { FloatingButtons } from './floating-buttons/FloatingButtons';
+export { FeaturesWidget } from './features-widget/FeaturesWidget';
+export { Footer } from './footer/Footer';
+export { Header } from './header/Header';
+export { NavigationSidebar } from './navigation-sidebar/NavigationSidebar';
+export { CookieConsent } from './cookie-consent/CookieConsent';
