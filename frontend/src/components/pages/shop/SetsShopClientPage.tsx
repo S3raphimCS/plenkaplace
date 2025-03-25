@@ -1,0 +1,173 @@
+'use client';
+import { useState, useEffect } from 'react';
+import { PageWrapper } from '@/components/shared/PageWrapper';
+import { ClubBanner } from '@/components/widgets/banners/ClubBanner';
+import { ShopProductGrid } from '@/components/widgets/product/ShopProductGrid';
+import { paths } from '@/lib/paths';
+import {
+  FilterSection,
+  FilterSidebarSection,
+} from '@/components/widgets/filters';
+import { HeaderBanner } from '@/components/widgets/banners';
+import { Product } from '@/components/entity';
+import { Skeleton } from '@/components/shared/ui/skeleton';
+import { Api, Brand } from '@/lib/api';
+import Image from 'next/image';
+import { SortDropdown } from '@/components/widgets/filters/SortDropdown';
+
+const api = new Api();
+
+export default function SetsShopClientPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [brands, setBrands] = useState<Brand[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [priceFilter, setPriceFilter] = useState<{ min: number; max: number }>({
+    min: 0,
+    max: 999999999,
+  });
+  const [brandFilter, setBrandFilter] = useState<number[]>([]);
+  const [sortBy, setSortBy] = useState<string>('-created_at');
+
+  useEffect(() => {
+    async function fetchProducts() {
+      setLoading(true);
+      try {
+        console.log('Выбранные бренды:', brandFilter);
+        console.log('Текущая сортировка:', sortBy);
+        const response = await api.shop.shopProductsList({
+          product_type: 'Наборы',
+          count: 900,
+          price_min: priceFilter.min,
+          price_max: priceFilter.max,
+          brand: brandFilter.length ? brandFilter.join(',') : undefined,
+          ordering: sortBy,
+        });
+        setProducts(response.data.results);
+      } catch (err) {
+        console.error('Ошибка загрузки товаров:', err);
+        setError('Ошибка загрузки данных');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    async function fetchBrands() {
+      try {
+        const response = await api.shop.shopBrandsList();
+        setBrands(response.data.results);
+      } catch (err) {
+        console.error('Ошибка загрузки брендов:', err);
+      }
+    }
+
+    fetchProducts();
+    fetchBrands();
+  }, [priceFilter, brandFilter, sortBy]);
+
+  const handleSortChange = (sortOption: string) => {
+    setSortBy(sortOption);
+  };
+
+  const sections: FilterSection[] = [
+    {
+      title: 'Цена',
+      type: 'price',
+      items: [
+        {
+          label: 'Все цены',
+          value: { min: 0, max: 999999999 },
+        },
+        {
+          label: 'До 3 000 руб.',
+          value: { min: 0, max: 3000 },
+        },
+        {
+          label: '3 000 - 5 000 руб.',
+          value: { min: 3000, max: 5000 },
+        },
+        {
+          label: '5 000 - 7 000 руб.',
+          value: { min: 5000, max: 7000 },
+        },
+        {
+          label: '12 000 - 20 000 руб.',
+          value: { min: 12000, max: 20000 },
+        },
+        {
+          label: '20 000 - 35 000 руб.',
+          value: { min: 20000, max: 35000 },
+        },
+      ],
+    },
+    {
+      title: 'Бренд',
+      type: 'brand',
+      items: brands,
+    },
+  ];
+
+  return (
+    <main className="my-6 flex flex-col gap-6">
+      <HeaderBanner
+        className="text-white"
+        imageSrc="/banner/catalog.png"
+        title="Наборы"
+        description="Не спрашивай, зачем унылой думой..."
+        imageClassName="brightness-50"
+        breadcrumbs={[
+          { href: paths.home, label: 'Главная', color: 'white' },
+          { href: paths.catalog, label: 'Каталог', color: 'white' },
+        ]}
+      />
+      <PageWrapper>
+        <div className="flex flex-col gap-6 px-4 py-6 sm:px-6 md:flex-row md:px-8 lg:px-40 lg:py-[60px] xl:py-[80px]">
+          <aside className="w-full sm:w-[40%] md:w-[25%] lg:w-[30%] xl:w-[25%]">
+            <FilterSidebarSection
+              sections={sections}
+              selectedBrands={brandFilter}
+              onResetFilters={() => {
+                setPriceFilter({ min: 0, max: 999999999 });
+                setBrandFilter([]);
+              }}
+              onFilterChange={(type, value) => {
+                if (type === 'price') setPriceFilter(value);
+              }}
+              onBrandFilterChange={setBrandFilter}
+            />
+          </aside>
+
+          <section className="w-full flex-1 sm:w-[60%] md:w-[75%] lg:w-[82%] xl:w-[75%]">
+            <div className="mb-4 flex justify-end">
+              <SortDropdown
+                onSortChange={handleSortChange}
+                selectedSort={sortBy}
+              />
+            </div>
+
+            {loading ? (
+              <Skeleton className="h-[250px] w-[150px] rounded-xl" />
+            ) : error ? (
+              <p className="text-red-500">{error}</p>
+            ) : products.length === 0 ? (
+              <div className="flex flex-col items-center gap-6">
+                <Image
+                  src="/cart/not_found.png"
+                  alt="Товары не найдены"
+                  width={300}
+                  height={300}
+                />
+                <p className="text-center text-lg text-gray-500">
+                  Товары не найдены
+                </p>
+              </div>
+            ) : (
+              <ShopProductGrid products={products} />
+            )}
+          </section>
+        </div>
+      </PageWrapper>
+      <ClubBanner />
+    </main>
+  );
+}
