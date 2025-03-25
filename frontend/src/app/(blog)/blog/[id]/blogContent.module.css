@@ -1,0 +1,111 @@
+.content {
+  @apply prose prose-lg max-w-none;
+}
+
+.content h1 {
+  @apply text-4xl font-bold text-gray-900;
+}
+
+.content h2 {
+  @apply text-3xl font-semibold text-gray-800;
+}
+
+.content h3 {
+  @apply text-2xl font-semibold text-gray-700;
+}
+
+.content h4 {
+  @apply text-xl font-medium text-gray-700;
+}
+
+.content h5 {
+  @apply text-lg font-medium text-gray-600;
+}
+
+.content h6 {
+  @apply text-base font-medium text-gray-600;
+}
+
+.content p {
+  @apply text-lg leading-relaxed text-gray-700;
+}
+
+.content ul {
+  @apply list-inside list-disc pl-6;
+}
+
+.content ol {
+  @apply list-inside list-decimal pl-6;
+}
+
+.content li {
+  @apply mb-2;
+}
+
+.content table {
+  @apply w-full border-collapse border border-gray-600;
+}
+
+.content th {
+  @apply border border-gray-600 bg-gray-100 px-4 py-2 text-left font-semibold;
+}
+
+.content td {
+  @apply border border-gray-600 px-4 py-2 text-left;
+}
+
+.content tbody tr:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+.content img {
+  @apply mx-auto rounded-lg object-cover shadow-md;
+}
+
+.content a {
+  @apply text-blue-600 underline transition hover:text-blue-800;
+}
+
+.content blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic text-gray-600;
+}
+
+.content pre {
+  @apply overflow-x-auto rounded bg-gray-900 p-4 text-sm text-gray-100;
+}
+
+.content code {
+  @apply rounded bg-gray-200 px-1 py-0.5 text-sm text-gray-800;
+}
+
+.content pre code {
+  @apply bg-transparent text-white;
+}
+
+.content hr {
+  @apply my-6 border-t border-gray-600;
+}
+
+.content strong {
+  @apply font-bold text-gray-900;
+}
+
+.content em {
+  @apply italic text-gray-800;
+}
+
+.content u {
+  @apply underline;
+}
+
+.content s {
+  @apply text-gray-500 line-through;
+}
+
+.content sub {
+  @apply align-sub text-sm;
+}
+
+.content sup {
+  @apply align-super text-sm;
+}

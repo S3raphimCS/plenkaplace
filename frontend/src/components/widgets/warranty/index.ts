@@ -1,0 +1,1 @@
+export { WarrantyInfo } from './WarrantyInfo';
