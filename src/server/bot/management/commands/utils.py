@@ -1,8 +1,7 @@
+from django.conf import settings
 from loguru import logger
 import requests
 from rest_framework import status
-
-from django.conf import settings
 
 
 class TelegramBotWebhook:

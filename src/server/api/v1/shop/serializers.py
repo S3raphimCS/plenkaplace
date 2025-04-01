@@ -9,13 +9,13 @@ from server.apps.shop.enums import (
 from server.apps.shop.models import (
     Brand,
     DeliveryMethod,
+    Feedback,
     Order,
     OrderItem,
     Product,
     ProductImage,
     ProductType,
     PromoCode,
-    Feedback
 )
 
 

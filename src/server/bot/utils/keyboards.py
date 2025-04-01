@@ -4,9 +4,9 @@ from telebot.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
     KeyboardButton,
+    MenuButtonWebApp,
     ReplyKeyboardMarkup,
     WebAppInfo,
-    MenuButtonWebApp,
 )
 
 

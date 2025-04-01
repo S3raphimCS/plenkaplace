@@ -5,6 +5,7 @@ from telebot import TeleBot, logger
 from telebot.async_telebot import AsyncTeleBot
 from telebot.types import CallbackQuery, Message
 
+
 ERROR_BOT_TEXT = 'К сожалению, возникла ошибка обработки Вашего запроса. Попробуйте позже'
 
 
