@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     "server.apps.users",
     "server.apps.news",
     "server.apps.shop",
-    "server.apps.flatpages"
+    "server.apps.flatpages",
+    "server.bot"
 ]
 
 MIDDLEWARE = [
@@ -160,6 +161,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SITE_URL = config('SITE_URL', default='http://localhost:8000')
+CLIENT_BOT_TOKEN = config('CLIENT_BOT_TOKEN', default='')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'

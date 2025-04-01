@@ -10,4 +10,6 @@ python "manage.py" create_delivery_methods
 
 python "manage.py" create_product_types
 
+python "manage.py" start_webhook
+
 gunicorn -c "$PROJECT_ROOT/gunicorn.conf.py" server.wsgi:application
