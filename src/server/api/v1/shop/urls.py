@@ -3,11 +3,11 @@ from rest_framework.routers import DefaultRouter
 from server.api.v1.shop.views import (
     BrandViewSet,
     DeliveryMethodViewSet,
+    FeedbackViewSet,
     OrderViewSet,
     ProductTypeViewSet,
     ProductViewSet,
     PromoCodeViewSet,
-    FeedbackViewSet
 )
 
 

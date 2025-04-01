@@ -2,7 +2,7 @@ import logging
 
 from django.conf import settings
 from telebot import TeleBot, logger
-from telebot.types import WebAppInfo, MenuButtonWebApp
+from telebot.types import MenuButtonWebApp, WebAppInfo
 
 from server.bot.handlers.start import client_start
 

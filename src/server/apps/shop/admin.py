@@ -3,13 +3,13 @@ from django.contrib import admin
 from server.apps.shop.models import (
     Brand,
     DeliveryMethod,
+    Feedback,
     Order,
     OrderItem,
     Product,
     ProductImage,
     ProductType,
     PromoCode,
-    Feedback
 )
 
 

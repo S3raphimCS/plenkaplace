@@ -1,5 +1,5 @@
-from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
+from rest_framework.viewsets import GenericViewSet
 
 from server.api.v1.users.serializers import ContactRequestSerializer
 from server.apps.users.models import ContactRequest
