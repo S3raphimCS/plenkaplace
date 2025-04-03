@@ -5,10 +5,8 @@ import {
   NavigationMenuList,
 } from '@/components/shared/ui/navigation-menu';
 import { Separator } from '@/components/shared/ui/separator';
-import { FaVk } from 'react-icons/fa6';
 import { AiFillInstagram } from 'react-icons/ai';
 import { FaTelegram } from 'react-icons/fa';
-import { FaYoutube } from 'react-icons/fa';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -50,13 +48,11 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: <FaYoutube className="h-6 w-6" />, href: 'https://youtube.com' },
   { icon: <FaTelegram className="h-6 w-6" />, href: paths.telegram },
   {
     icon: <AiFillInstagram className="h-6 w-6" />,
     href: paths.instagram,
   },
-  { icon: <FaVk className="h-6 w-6" />, href: 'https://vk.com' },
 ];
 
 export const Footer: React.FC = () => {
@@ -70,9 +66,7 @@ export const Footer: React.FC = () => {
           alt="PlenkaPlace Logo"
           src="/logo.png"
         />
-        <div className="text-app-primary text-[34px] font-bold">
-          PlenkaPlace
-        </div>
+        <div className="text-[34px] font-bold">PlenkaPlace</div>
       </div>
 
       <Separator className="mx-auto my-12 max-w-[1280px] bg-[#100e15]" />
@@ -128,12 +122,12 @@ export const Footer: React.FC = () => {
         <NavigationMenu>
           <NavigationMenuList className="flex flex-wrap items-center gap-6">
             {footerLinks.map((link, index) => (
-              <NavigationMenuItem key={index}>
+              <NavigationMenuItem
+                key={index}
+                className="transition hover:scale-[1.1]"
+              >
                 <NavigationMenuLink asChild>
-                  <Link
-                    href={link.href}
-                    className="font-text px-2 py-4 transition hover:scale-[1.1]"
-                  >
+                  <Link href={link.href} className="font-text px-2 py-4">
                     {link.label}
                   </Link>
                 </NavigationMenuLink>
