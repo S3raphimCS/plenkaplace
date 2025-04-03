@@ -21,9 +21,13 @@ from django.urls import include, path
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('server/admin/', admin.site.urls),
     path('api/', include('server.api.urls')),
 ]
+
+admin.site.site_title = "PlenkaPlace"
+admin.site.site_header = "PlenkaPlace Admin"
+admin.site.index_title = "Plenka Administration Site"
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -9,4 +9,4 @@ COPY deploy/front_entrypoint.sh /client/front_entrypoint.sh
 WORKDIR /client
 RUN npm install
 
-CMD ["./front_entrypoint.sh"]
+CMD ["sh", "./front_entrypoint.sh"]
