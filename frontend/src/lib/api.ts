@@ -382,7 +382,7 @@ export enum ContentType {
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = 'http://localhost:8000/api/v1';
+  public baseUrl: string = `http://${process.env.NEXT_PUBLIC_API_SERVER}`;
   private securityData: SecurityDataType | null = null;
   private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
@@ -395,6 +395,15 @@ export class HttpClient<SecurityDataType = unknown> {
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
   };
+
+  private getCookie(name: string): string | null {
+    if (typeof document === 'undefined') return null;
+
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+    return null;
+  }
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
     Object.assign(this, apiConfig);
@@ -466,12 +475,15 @@ export class HttpClient<SecurityDataType = unknown> {
     params1: RequestParams,
     params2?: RequestParams
   ): RequestParams {
+    const csrfToken = this.getCookie('csrftoken');
+
     return {
       ...this.baseApiParams,
       ...params1,
       ...(params2 || {}),
       headers: {
         ...(this.baseApiParams.headers || {}),
+        ...(csrfToken ? { 'X-CSRF-Token': csrfToken } : {}),
         ...(params1.headers || {}),
         ...((params2 && params2.headers) || {}),
       },
