@@ -25,8 +25,8 @@ export const ProductBreadcrumb = () => {
 
         const response = await api.shop.shopProductsRead(productSlug);
         setProduct(response.data);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error(err);
         setError('Ошибка загрузки товара');
       } finally {
         setLoading(false);

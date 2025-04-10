@@ -24,8 +24,8 @@ export const ReviewsSection: React.FC = () => {
       try {
         const response = await api.shop.shopFeedbacksList({ count: 10 }, {});
         setReviews(response.data.results);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error(err);
         setError('Ошибка загрузки отзывов');
       } finally {
         setLoading(false);

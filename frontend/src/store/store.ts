@@ -19,9 +19,6 @@ const secretKey = 'plenka-good-truth';
 
 const encryptor = encryptTransform({
   secretKey,
-  onError: (error) => {
-    console.error('Ошибка шифрования:', error);
-  },
 });
 
 const cartPersistConfig = {

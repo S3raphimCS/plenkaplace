@@ -33,8 +33,6 @@ export default function SetsShopClientPage() {
     async function fetchProducts() {
       setLoading(true);
       try {
-        console.log('Выбранные бренды:', brandFilter);
-        console.log('Текущая сортировка:', sortBy);
         const response = await api.shop.shopProductsList({
           product_type: 'Наборы',
           count: 900,
@@ -44,8 +42,8 @@ export default function SetsShopClientPage() {
           ordering: sortBy,
         });
         setProducts(response.data.results);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error('Ошибка загрузки товаров:', err);
         setError('Ошибка загрузки данных');
       } finally {
         setLoading(false);
@@ -56,9 +54,8 @@ export default function SetsShopClientPage() {
       try {
         const response = await api.shop.shopBrandsList();
         setBrands(response.data.results);
-      } catch (err) {
-        console.error('Ошибка загрузки брендов:', err);
-      }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {}
     }
 
     fetchProducts();

@@ -34,8 +34,8 @@ export const BlogGrid: React.FC = () => {
           page: 1,
         });
         setNews(response.data.results);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error(err);
         setError('Ошибка загрузки новостей');
       } finally {
         setLoading(false);
@@ -60,8 +60,8 @@ export const BlogGrid: React.FC = () => {
       } else {
         throw new Error('Некорректный формат данных');
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
-      console.error(err);
       setError('Ошибка загрузки дополнительных новостей');
     }
   };

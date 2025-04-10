@@ -70,8 +70,8 @@ export default function CertificateShopClientPage() {
           setCertificates(staticCertificates);
           setIsStatic(true);
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error('Ошибка загрузки сертификатов:', err);
         setError('Ошибка загрузки данных');
         setCertificates(staticCertificates);
         setIsStatic(true);

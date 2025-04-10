@@ -29,8 +29,8 @@ export default function ProductDetailsPage() {
 
         const response = await api.shop.shopProductsRead(slug);
         setProduct(response.data);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error(err);
         setError('Ошибка загрузки товара');
       } finally {
         setLoading(false);

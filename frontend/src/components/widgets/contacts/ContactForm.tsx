@@ -88,9 +88,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ fields }) => {
         email: data.email,
       });
       handleSuccess(toast, 'Форма успешно отправлена');
-    } catch (error) {
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
       handleError(toast, 'Ошибка при отправке формы');
-      console.log(error);
     } finally {
       setTimeout(() => setIsSubmitting(false), 5000);
     }

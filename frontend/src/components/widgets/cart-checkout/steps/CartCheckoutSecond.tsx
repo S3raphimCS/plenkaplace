@@ -45,10 +45,7 @@ export const CartCheckoutSecond: React.FC<CartCheckoutSecondProps> = ({
           : JSON.parse(order.items),
       };
 
-      console.log('Отправляем заказ:', formattedOrder);
-
       const response = await api.shop.shopOrdersCreate(formattedOrder);
-      console.log(response.data);
       if (response.ok) {
         //@ts-expect-error: Any and possible null
         dispatch(setOrderCreatedAt(response.data.created_at));
@@ -56,9 +53,8 @@ export const CartCheckoutSecond: React.FC<CartCheckoutSecondProps> = ({
         dispatch(setOrderIdCreated(response.data.id));
         setStep(3);
       }
-    } catch (error) {
-      console.error('Ошибка создания заказа:', error);
-    }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {}
   };
 
   const orderSummary = [

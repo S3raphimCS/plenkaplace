@@ -22,8 +22,8 @@ export const DeliveryAccordion = () => {
       try {
         const response = await api.shop.shopDeliveryMethodsList();
         setDeliveryMethods(response.data.results);
-      } catch (error) {
-        console.error('Ошибка загрузки методов доставки:', error);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
       } finally {
         setLoading(false);
       }

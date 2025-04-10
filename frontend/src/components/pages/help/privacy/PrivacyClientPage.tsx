@@ -23,8 +23,8 @@ export default function PrivacyClientPage() {
         } else {
           setPrivacyInfo(null);
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error('Ошибка загрузки политики конфиденциальности:', err);
         setError('Ошибка загрузки политики конфиденциальности');
       } finally {
         setLoading(false);

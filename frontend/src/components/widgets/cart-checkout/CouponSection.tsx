@@ -63,8 +63,8 @@ export const CouponSection: React.FC = () => {
         setCouponCorrect(null);
         setError('Промокод недействителен');
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
-      console.error('Ошибка проверки промокода:', err);
       setError('Ошибка проверки промокода');
     } finally {
       setLoading(false);

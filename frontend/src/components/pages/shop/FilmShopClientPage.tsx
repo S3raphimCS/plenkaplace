@@ -43,8 +43,8 @@ export default function FilmShopClientPage() {
           ordering: sortBy,
         });
         setProducts(response.data.results);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error('Ошибка загрузки товаров:', err);
         setError('Ошибка загрузки данных');
       } finally {
         setLoading(false);
@@ -55,9 +55,8 @@ export default function FilmShopClientPage() {
       try {
         const response = await api.shop.shopBrandsList();
         setBrands(response.data.results);
-      } catch (err) {
-        console.error('Ошибка загрузки брендов:', err);
-      }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {}
     }
 
     fetchProducts();

@@ -45,8 +45,8 @@ export const NewProductsWidget = () => {
         ];
 
         setProducts(allProducts);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error(err);
         setError('Ошибка загрузки данных');
       } finally {
         setLoading(false);

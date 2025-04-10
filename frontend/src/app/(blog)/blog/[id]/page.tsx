@@ -26,8 +26,8 @@ export default function BlogPostPage() {
       try {
         const response = await api.news.newsRead(Number(id));
         setNewsData(response.data);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error(err);
         setError('Ошибка загрузки новости');
       } finally {
         setLoading(false);

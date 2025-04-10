@@ -52,8 +52,8 @@ async function fetchProducts(): Promise<string[]> {
     return response.data.results.map((product: Product) =>
       product.slug!.toString()
     );
-  } catch (error) {
-    console.error('Ошибка загрузки товаров для sitemap:', error);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (err) {
     return [];
   }
 }
@@ -63,8 +63,8 @@ async function fetchBlogPosts(): Promise<string[]> {
     const api = new Api();
     const response = await api.news.newsList();
     return response.data.results.map((post: NewsList) => post.id!.toString());
-  } catch (error) {
-    console.error('Ошибка загрузки блог-постов для sitemap:', error);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (err) {
     return [];
   }
 }

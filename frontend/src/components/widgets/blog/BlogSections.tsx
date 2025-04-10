@@ -31,8 +31,8 @@ export const BlogSection: React.FC = () => {
         });
 
         setNews(response.data.results);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.log(err);
         setError('Ошибка загрузки данных');
       } finally {
         setLoading(false);
