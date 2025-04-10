@@ -4,13 +4,13 @@ import { Api, NewsList } from '@/lib/api';
 import { Product } from '@/components/entity';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'http://localhost:3000';
+  const baseUrl = `https://${process.env.NEXT_PUBLIC_DOMAIN_NAME!}`;
 
   const staticPages = Object.values(paths)
     .filter(
       (path) =>
         typeof path === 'string' &&
-        !path.startsWith('http') &&
+        !path.startsWith('https') &&
         ![
           '/catalog',
           'mailto:danil.payuk.57@gmail.com',

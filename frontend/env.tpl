@@ -1,0 +1,2 @@
+NEXT_PUBLIC_DOMAIN_NAME=localhost
+NEXT_PUBLIC_API_SERVER=localhost/api/v1
