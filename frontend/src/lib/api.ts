@@ -382,7 +382,7 @@ export enum ContentType {
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = `http://${process.env.NEXT_PUBLIC_API_SERVER}`;
+  public baseUrl: string = `${process.env.NEXT_PUBLIC_ENABLED_PROTO}}://${process.env.NEXT_PUBLIC_API_SERVER}`;
   private securityData: SecurityDataType | null = null;
   private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
@@ -483,7 +483,7 @@ export class HttpClient<SecurityDataType = unknown> {
       ...(params2 || {}),
       headers: {
         ...(this.baseApiParams.headers || {}),
-        ...(csrfToken ? { 'X-CSRF-Token': csrfToken } : {}),
+        ...(csrfToken ? { 'X-CSRFToken': csrfToken } : {}),
         ...(params1.headers || {}),
         ...((params2 && params2.headers) || {}),
       },

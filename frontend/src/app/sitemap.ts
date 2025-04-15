@@ -4,7 +4,7 @@ import { Api, NewsList } from '@/lib/api';
 import { Product } from '@/components/entity';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = `https://${process.env.NEXT_PUBLIC_DOMAIN_NAME!}`;
+  const baseUrl = `${process.env.NEXT_PUBLIC_ENABLED_PROTO}://${process.env.NEXT_PUBLIC_DOMAIN_NAME!}`;
 
   const staticPages = Object.values(paths)
     .filter(
