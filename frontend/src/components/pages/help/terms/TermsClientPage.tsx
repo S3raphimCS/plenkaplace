@@ -23,8 +23,8 @@ export default function TermsClientPage() {
         } else {
           setTermsInfo(null);
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error('Ошибка загрузки пользовательского соглашения:', err);
         setError('Ошибка загрузки пользовательского соглашения');
       } finally {
         setLoading(false);

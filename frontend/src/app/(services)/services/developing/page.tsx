@@ -147,7 +147,7 @@ export default function DevelopingPage() {
         className="text-white"
         imageSrc="/banner/catalog.png"
         title="Проявка и оцифровка плёнки"
-        description="Не спрашивай, зачем унылой думой..."
+        description="Качественная обработка пленки и цифровой архив твоих лучших кадров"
         imageClassName="brightness-50"
         breadcrumbs={[
           { href: paths.home, label: 'Главная', color: 'white' },

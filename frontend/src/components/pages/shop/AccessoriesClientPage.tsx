@@ -91,7 +91,7 @@ export default function AccessoriesClientPage() {
         className="text-white"
         imageSrc="/banner/catalog.png"
         title="Аксессуары"
-        description="Не спрашивай, зачем унылой думой..."
+        description="Все, что нужно для идеального кадра — аксессуары, которые вдохновляют"
         imageClassName="brightness-50"
         breadcrumbs={[
           { href: paths.home, label: 'Главная', color: 'white' },

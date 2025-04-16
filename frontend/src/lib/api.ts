@@ -225,7 +225,7 @@ export interface Order {
    * @minLength 1
    * @maxLength 20
    */
-  phone: string;
+  contact_data: string;
   /**
    * Email
    * @format email

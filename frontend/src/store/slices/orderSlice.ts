@@ -4,7 +4,7 @@ import { CartItemModel } from '@/components/entity';
 
 const initialState: Order = {
   first_name: '',
-  phone: '',
+  contact_data: '',
   email: '',
   address: '',
   comment: '',
@@ -34,7 +34,7 @@ const orderSlice = createSlice({
       }>
     ) => {
       state.first_name = action.payload.name;
-      state.phone = action.payload.contactValue;
+      state.contact_data = action.payload.contactValue;
       state.contact_preferences = action.payload.contact_preferences;
       state.email = action.payload.email;
     },

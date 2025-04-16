@@ -110,7 +110,7 @@ export default function SetsShopClientPage() {
         className="text-white"
         imageSrc="/banner/catalog.png"
         title="Наборы"
-        description="Не спрашивай, зачем унылой думой..."
+        description="Все необходимое в одном комплекте — удобно, выгодно, стильно"
         imageClassName="brightness-50"
         breadcrumbs={[
           { href: paths.home, label: 'Главная', color: 'white' },

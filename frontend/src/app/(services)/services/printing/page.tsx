@@ -66,7 +66,7 @@ export default function PrintingPage() {
         className="text-white"
         imageSrc="/banner/catalog.png"
         title="Печать"
-        description="Не спрашивай, зачем унылой думой..."
+        description="Печать, которая сохраняет эмоции и делает их осязаемыми"
         imageClassName="brightness-50"
         breadcrumbs={[
           { href: paths.home, label: 'Главная', color: 'white' },

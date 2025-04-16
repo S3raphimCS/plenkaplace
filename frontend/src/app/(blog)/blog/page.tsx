@@ -15,7 +15,7 @@ export default function BlogPage() {
         className="text-white"
         imageSrc="/banner/blog.png"
         title="Блог"
-        description="Не спрашивай, зачем унылой думой..."
+        description="Погружайся в мир фотоискусства вместе с нашими экспертами"
         imageClassName="brightness-50"
         breadcrumbs={[
           { href: paths.home, label: 'Главная', color: 'white' },

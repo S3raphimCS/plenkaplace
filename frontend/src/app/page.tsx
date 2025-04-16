@@ -16,7 +16,6 @@ export default function Home() {
         <ClubBanner />
         <ReviewsSection />
       </PageWrapper>
-      {/* <PurchaseBanner /> */}
       <PageWrapper className="min-h-screen md:min-h-full">
         <BlogSection />
       </PageWrapper>

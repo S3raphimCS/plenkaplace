@@ -15,7 +15,7 @@ export default function WarrantyPage() {
         className="text-white"
         imageSrc="/banner/catalog.png"
         title="Гарантии"
-        description="Не спрашивай, зачем унылой думой..."
+        description="Ваше доверие — наша главная ценность и обязательство"
         imageClassName="brightness-50"
         breadcrumbs={[
           { href: paths.home, label: 'Главная', color: 'white' },

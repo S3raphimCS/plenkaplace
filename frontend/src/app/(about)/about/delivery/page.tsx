@@ -16,7 +16,7 @@ export default function DeliveryPage() {
         className="text-white"
         imageSrc="/banner/catalog.png"
         title="Доставка"
-        description="Не спрашивай, зачем унылой думой..."
+        description="Доставляем с заботой и вниманием к каждой детали"
         imageClassName="brightness-50"
         breadcrumbs={[
           { href: paths.home, label: 'Главная', color: 'white' },
