@@ -84,7 +84,7 @@ class OrderItemForCreateSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True)
     first_name = serializers.CharField(max_length=100, label="Имя")
-    phone = serializers.CharField(max_length=20, label="Телефон")
+    contact_data = serializers.CharField(max_length=20, label="Контактные данные")
     email = serializers.EmailField(max_length=100, label="Email")
     address = serializers.CharField(max_length=255, label="Адрес")
     comment = serializers.CharField(max_length=255, allow_blank=True, label="Комментарий")
@@ -132,7 +132,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['id', "first_name", "phone", "email", "address", "comment", 'payment_method', 'delivery_method',
+        fields = ['id', "first_name", "contact_data", "email", "address", "comment", 'payment_method', 'delivery_method',
                   'contact_preferences', "promo_code", 'total_price', 'created_at', 'items']
         read_only_fields = ['created_at']
 

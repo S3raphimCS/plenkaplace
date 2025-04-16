@@ -13,8 +13,3 @@ class ArticleAdmin(admin.ModelAdmin):
     inlines = [ArticleImageInline]
     list_display = ("title", "published_date", "is_published")
     list_editable = ("is_published",)
-
-
-@admin.register(ArticleImage)
-class ArticleImageAdmin(admin.ModelAdmin):
-    pass

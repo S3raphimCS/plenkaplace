@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 from server.apps.shop.enums import (
     ContactPreferenceChoices,
@@ -23,7 +24,7 @@ class PromoCode(models.Model):
     code = models.CharField(max_length=30, verbose_name="Промокод")
     discount_type = models.CharField(max_length=30, choices=PromoCodeTypeChoices.choices, verbose_name="Тип скидки")
     discount_value = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Величина скидки")
-    max_discount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    max_discount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Максимальная скидка", null=True, blank=True)
     is_active = models.BooleanField(default=True, verbose_name="Активен")
     valid_from = models.DateTimeField(verbose_name="Начало действия")
     valid_to = models.DateTimeField(verbose_name="Окончание действия")
@@ -102,31 +103,51 @@ class Order(models.Model):
     """Модель заказа."""
 
     first_name = models.CharField(max_length=100, verbose_name='Имя')
-    phone = models.CharField(max_length=20, verbose_name='Телефон')
+    contact_data = models.CharField(max_length=30, verbose_name='Контактные данные', default="+7123456789")
     email = models.EmailField(verbose_name='Email')
     address = models.CharField(max_length=100, verbose_name='Адрес')
     comment = models.TextField(verbose_name='Комментарий', blank=True, null=True)
     delivery_method = models.ForeignKey(DeliveryMethod, on_delete=models.SET_NULL, verbose_name='Способ доставки', null=True)
     contact_preferences = models.CharField(choices=ContactPreferenceChoices.choices, max_length=100, verbose_name='Предпочтения для связи')
     payment_method = models.CharField(max_length=100, verbose_name='Способ оплаты', choices=PaymentMethodChoices.choices)
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Итоговая сумма')
     is_processed = models.BooleanField(default=False, verbose_name='Заказ в обработке')
     is_done = models.BooleanField(default=False, verbose_name='Заказ выполнен')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
 
-    promo_code = models.ForeignKey(to=PromoCode, on_delete=models.SET_NULL, null=True, blank=True)
+    promo_code = models.ForeignKey(to=PromoCode, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Промокод")
     discount_amount = models.DecimalField(
         max_digits=10, decimal_places=2,
         verbose_name='Сумма скидки', default=0
     )
 
-    # flake8:noqa
-    @property
-    def total_price(self):
+    def get_total_price(self):
         return sum(item.quantity * item.product.price for item in self.items.all()) - self.discount_amount
 
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        promo = self.promo_code
+        discount_value = 0
+        if promo:
+            if promo.discount_type == PromoCodeTypeChoices.fixed_amount:
+                discount_value = promo.discount_value
+            else:
+                discount_value = int(Decimal(self.total_price) / 100 * promo.discount_value)
+            if promo.max_discount:
+                if discount_value > promo.max_discount:
+                    discount_value = promo.max_discount
+        if discount_value >= self.total_price:
+            self.discount_amount = 0
+        else:
+            self.discount_amount = discount_value
+        super().save(force_insert, force_update)
+
     def __str__(self):
-        return f"{self.id} - {self.first_name}, {self.phone}, {self.total_price} руб."
+        return f"{self.id} - {self.first_name}, {self.contact_data}, {self.total_price} руб."
+
+    total_price = property(get_total_price)
+    get_total_price.short_description = "Итоговая сумма"
 
     class Meta:
         verbose_name = 'Заказ'
