@@ -61,22 +61,20 @@ export const CartCheckoutSecond: React.FC<CartCheckoutSecondProps> = ({
     { label: 'Промежуточный итог', value: `${order.total_price} ₽` },
     //@ts-expect-error: discount_value non part of Order
     ...(order.discount_value
-      ? //@ts-expect-error: discount_value non part of Order
-
-        [{ label: 'Скидка', value: `-${order.discount_value} ₽` }]
+       //@ts-expect-error: discount_value non part of Order
+      ? [{ label: 'Скидка', value: `-${order.discount_value} ₽` }]
       : []),
     {
       label: 'Итог',
       //@ts-expect-error: price_with_discount non part of Order
-
       value: `${order.price_with_discount! || order.total_price} ₽`,
       isTotal: true,
     },
   ];
 
   return (
-    <div className="flex items-start gap-16 px-0 py-20">
-      <div className="flex flex-col items-start gap-6">
+    <div className="flex flex-col lg:flex-row items-start gap-y-10 lg:gap-x-16 px-4 py-10">
+      <div className="flex flex-col items-start gap-6 w-full lg:max-w-2xl">
         <Card className="w-full text-black">
           <CardContent className="p-6 pt-10">
             <h2 className="mb-6 mt-[-1.00px] w-fit text-2xl">
@@ -88,14 +86,14 @@ export const CartCheckoutSecond: React.FC<CartCheckoutSecondProps> = ({
         <DeliveryAddress />
         <CouponSection />
         <Button
-          className="w-[643px] rounded-lg px-10 py-3 text-center"
+          className="w-full lg:w-[643px] rounded-lg px-10 py-3 text-center"
           onClick={handleOrderSubmit}
         >
           Создать заказ
         </Button>
       </div>
 
-      <Card className="w-[413px] rounded-md bg-white text-black">
+      <Card className="w-full lg:w-[413px] rounded-md bg-white text-black">
         <CardContent className="p-6 pt-4">
           <h2 className="mb-4 text-[28px] font-medium">Заказ</h2>
           {cartItems.map((item) => (
