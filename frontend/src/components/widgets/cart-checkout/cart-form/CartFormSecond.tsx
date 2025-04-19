@@ -62,7 +62,7 @@ export const CartFormSecond: React.FC = () => {
     defaultValues: {
       name: order.first_name,
       contact_preferences: order.contact_preferences || 'phone_call',
-      contactValue: order.phone || '',
+      contactValue: order.contact_data || '',
       email: order.email || '',
     },
   });

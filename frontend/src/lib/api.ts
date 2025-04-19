@@ -225,7 +225,7 @@ export interface Order {
    * @minLength 1
    * @maxLength 20
    */
-  phone: string;
+  contact_data: string;
   /**
    * Email
    * @format email
@@ -382,7 +382,7 @@ export enum ContentType {
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = `${process.env.NEXT_PUBLIC_ENABLED_PROTO}}://${process.env.NEXT_PUBLIC_API_SERVER}`;
+  public baseUrl: string = `${process.env.NEXT_PUBLIC_ENABLED_PROTO}://${process.env.NEXT_PUBLIC_API_SERVER}`;
   private securityData: SecurityDataType | null = null;
   private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();

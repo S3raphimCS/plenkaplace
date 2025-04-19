@@ -5,7 +5,7 @@ import { IoCallOutline } from 'react-icons/io5';
 
 export const FeaturesWidget = () => {
   return (
-    <div className="flex flex-wrap items-start justify-start gap-6 bg-[#fff0e0] px-6 py-6 lg:px-40">
+    <div className="flex flex-wrap items-start justify-start gap-6 bg-[#fff0e0] py-6">
       <div className="inline-flex h-[320px] w-full flex-col items-start justify-between gap-[17px] bg-[#f5a300]/20 pb-12 pl-5 pr-[19px] pt-[47px] sm:w-[48%] md:w-[48%] lg:w-[23%]">
         <div className="relative">
           <MdOutlineLocalShipping size={64} className="text-[#141718]" />

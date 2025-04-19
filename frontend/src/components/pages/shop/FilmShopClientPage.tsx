@@ -92,7 +92,7 @@ export default function FilmShopClientPage() {
         className="text-white"
         imageSrc="/banner/catalog.png"
         title="Плёнка"
-        description="Не спрашивай, зачем унылой думой..."
+        description="Погрузись в атмосферу ретро с нашей коллекцией качественной фотопленки"
         imageClassName="brightness-50"
         breadcrumbs={[
           { href: paths.home, label: 'Главная', color: 'white' },
