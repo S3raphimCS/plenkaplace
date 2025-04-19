@@ -76,6 +76,7 @@ class Product(models.Model):
     is_available = models.BooleanField(default=True, verbose_name='Доступен')
     is_available_for_purchasing = models.BooleanField(default=True, verbose_name='Доступен для закупки')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    is_preorder = models.BooleanField(verbose_name="Под заказ", default=False)
 
     def __str__(self):
         return self.title

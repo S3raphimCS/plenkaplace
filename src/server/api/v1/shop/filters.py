@@ -19,7 +19,8 @@ class ProductFilter(filters.FilterSet):
     product_type = filters.CharFilter(field_name="product_type__title")
     is_available_for_purchasing = filters.BooleanFilter(field_name="is_available_for_purchasing")
     price = filters.RangeFilter(field_name="price")
+    is_preorder = filters.BooleanFilter(field_name="is_preorder")
 
     class Meta:
         model = Product
-        fields = ("title", "product_type", "is_available_for_purchasing", "price")
+        fields = ("title", "product_type", "is_available_for_purchasing", "is_preorder",  "price")

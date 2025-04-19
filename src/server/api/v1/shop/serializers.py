@@ -56,11 +56,12 @@ class ProductSerializer(serializers.ModelSerializer):
         label="Дата создания",
         format="%d-%m-%Y %H:%M"
     )
+    is_preorder = serializers.BooleanField(read_only=True, label="Предзаказ")
 
     class Meta:
         model = Product
         fields = ("id", "title", 'brand', "description", "price", "images", "slug",
-                  "product_type", "created_at", "is_available_for_purchasing")
+                  "product_type", "created_at", "is_preorder", "is_available_for_purchasing")
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
