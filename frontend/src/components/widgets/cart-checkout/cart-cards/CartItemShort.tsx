@@ -43,10 +43,10 @@ export const CartItemShort: React.FC<{ item: CartItemModel }> = ({ item }) => {
   };
 
   return (
-    <div className="flex items-center justify-between border-b px-0 py-6">
-      <div className="flex items-start gap-2.5">
-        <div className="flex w-[316px] items-center gap-4">
-          <div className="relative h-24 w-20">
+    <div className="flex flex-col items-center justify-between border-b px-0 py-6 sm:flex-row sm:py-4">
+      <div className="flex items-start gap-2.5 sm:w-full sm:gap-4">
+        <div className="flex w-full items-center gap-4 sm:w-auto">
+          <div className="relative h-24 w-20 sm:h-16 sm:w-16">
             <Link href={item.slug!}>
               <Image
                 src={item.images?.[0]?.image ?? '/product/default-product.png'}
@@ -57,10 +57,10 @@ export const CartItemShort: React.FC<{ item: CartItemModel }> = ({ item }) => {
               />
             </Link>
           </div>
-          <div className="flex flex-1 items-start gap-4">
-            <div className="flex w-[210px] flex-col items-start justify-center gap-2">
-              <div className="self-stretch">
-                <Link href={item.slug!}>{item.title} </Link>
+          <div className="flex flex-1 items-start gap-4 sm:gap-3">
+            <div className="flex w-[210px] flex-col items-start justify-center gap-2 sm:w-auto">
+              <div className="self-stretch text-xs sm:text-sm">
+                <Link href={item.slug!}>{item.title}</Link>
               </div>
               <Button
                 variant="ghost"
@@ -69,13 +69,14 @@ export const CartItemShort: React.FC<{ item: CartItemModel }> = ({ item }) => {
                 onClick={handleRemove}
               >
                 <Trash2 className="h-6 w-6" />
-                <span className="font-caption-1-semi">Удалить</span>
+                <span className="font-caption-1-semi text-xs">Удалить</span>
               </Button>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex w-[328px] items-center justify-between gap-4">
+
+      <div className="flex w-full items-center gap-4 sm:w-[328px] sm:justify-between">
         <div className="flex items-center gap-2">
           <Button
             variant="ghost"
