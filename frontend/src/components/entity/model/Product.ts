@@ -64,4 +64,5 @@ export interface Product {
   created_at?: string;
   /** Товар для закупки */
   is_available_for_purchasing?: boolean;
+  is_preorder?: boolean;
 }

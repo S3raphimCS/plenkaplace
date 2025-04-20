@@ -23,6 +23,7 @@ import { CartItemModel } from '../../model/CartItemModel';
 import { useToast } from '@/hooks/use-toast';
 import { handleSuccess, handleInfo } from '@/components/shared/Toasts';
 import { paths } from '@/lib/paths';
+import { Badge } from '@/components/shared/ui/badge';
 
 export const ProductCard = ({
   product,
@@ -84,7 +85,11 @@ export const ProductCard = ({
         </div>
 
         <div className="absolute left-4 top-4 z-10 flex w-[calc(100%-32px)] items-center justify-between">
-          <span></span>
+          {product.is_preorder ? (
+            <Badge className="h-10 bg-white hover:bg-white/90">Под заказ</Badge>
+          ) : (
+            <span />
+          )}
           <Button
             variant="ghost"
             size="icon"

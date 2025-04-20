@@ -70,7 +70,7 @@ export const FilterSidebarSection: React.FC<FilterSidebarSectionProps> = ({
   };
 
   return (
-    <div className="sticky top-8 flex w-[262px] flex-col gap-8">
+    <div className="sticky top-8 flex flex-col gap-8">
       <header className="flex items-center gap-2">
         <FilterIcon className="h-6 w-6" />
         <h2 className="font-text text-black-900">Фильтрация</h2>

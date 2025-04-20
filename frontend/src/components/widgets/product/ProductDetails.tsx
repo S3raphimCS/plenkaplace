@@ -9,12 +9,13 @@ import {
   CarouselPrevious,
 } from '@/components/shared/ui/carousel';
 import { Heart, ShoppingCart } from 'lucide-react';
-import Image from 'next/image';
 import React, { useState } from 'react';
 import { ImageModal } from '@/components/shared/ImageModal';
 import { useDispatch } from 'react-redux';
 import { addToFavourites } from '@/store/slices/favouritesSlice';
 import { addToCart } from '@/store/slices/cartSlice';
+import { Badge } from '@/components/shared/ui/badge';
+import { FallbackProductImage } from './FallbackProductImage';
 
 interface Thumbnail {
   id: number;
@@ -51,7 +52,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
             {thumbnails.map((thumbnail, index) => (
               <CarouselItem key={thumbnail.id}>
                 <div className="relative h-[400px] w-full md:h-[500px] lg:h-[728px]">
-                  <Image
+                  <FallbackProductImage
                     src={thumbnail.src}
                     alt={product.title}
                     fill
@@ -74,7 +75,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
               className="relative h-[100px] w-[100px] flex-shrink-0 md:h-[150px] md:w-[150px]"
               onClick={() => handleThumbnailClick(index)}
             >
-              <Image
+              <FallbackProductImage
                 src={thumbnail.src}
                 alt={product.title}
                 fill
@@ -91,7 +92,12 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
             {product.title}
           </h2>
 
-          <div className="text-sm text-gray-700 md:text-base">
+          <div className="flex flex-col gap-4 text-sm text-gray-700 md:text-base">
+            {product.is_preorder && (
+              <Badge className="h-10 bg-white px-4 hover:bg-white/90">
+                Под заказ
+              </Badge>
+            )}
             {product.description}
           </div>
 
