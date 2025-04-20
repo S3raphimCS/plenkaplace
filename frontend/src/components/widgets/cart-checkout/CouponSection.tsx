@@ -72,31 +72,34 @@ export const CouponSection: React.FC = () => {
   }
 
   return (
-    <div className="flex w-[424px] flex-col items-start gap-4">
+    <div className="w-sm sm:w-sm flex flex-col items-start gap-4 p-8 sm:p-4 lg:w-[424px]">
       <div className="flex w-full flex-col items-start gap-[7px]">
         <h2 className="mt-[-1px] w-full">У вас есть купон?</h2>
         <p className="font-body-2 w-full">Добавьте код для скидки на товары</p>
       </div>
 
-      <div className="flex h-[54px] w-[426px] border border-solid">
-        <div className="flex w-full items-center border-b px-4">
-          <Ticket className="h-6 w-6" />
+      <div className="flex h-[54px] w-full max-w-[426px] border border-solid sm:w-[426px]">
+        <div className="flex w-full items-center px-2 sm:px-4">
+          <Ticket className="h-6 w-6 shrink-0" />
+
           <Input
-            className="h-[52px] border-none focus-visible:outline-none focus-visible:ring-offset-0"
+            className="h-[52px] flex-1 border-none px-4 py-2 sm:px-8 sm:py-4"
             placeholder="Код купона"
             value={couponCode}
             onChange={(e) => setCouponCode(e.target.value)}
           />
-          <Button
-            variant="ghost"
-            onClick={handleApplyCoupon}
-            disabled={loading}
-          >
-            {loading ? 'Проверка...' : 'Применить'}
-          </Button>
+
+          <div className="ml-2 shrink-0">
+            <Button
+              variant="ghost"
+              onClick={handleApplyCoupon}
+              disabled={loading}
+            >
+              {loading ? 'Проверка...' : 'Применить'}
+            </Button>
+          </div>
         </div>
       </div>
-
       {error && <p className="text-red-500">{error}</p>}
       {couponCorrect && <p className="text-green-500">Промокод применён!</p>}
     </div>

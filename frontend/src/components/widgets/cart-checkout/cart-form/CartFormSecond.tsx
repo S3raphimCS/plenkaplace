@@ -1,4 +1,5 @@
 'use client';
+
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -96,9 +97,11 @@ export const CartFormSecond: React.FC = () => {
   }, [watchedFields, dispatch, trigger]);
 
   return (
-    <form className="flex w-full flex-col items-start gap-6">
-      <div className="flex w-full flex-col items-start gap-3">
-        <label className="text-xs font-bold text-black">Введите ваше ФИО</label>
+    <form className="flex w-full flex-col items-start gap-4 sm:gap-6">
+      <div className="flex w-full flex-col items-start gap-2 sm:gap-3">
+        <label className="text-sm font-bold text-black sm:text-xs">
+          Введите ваше ФИО
+        </label>
         <FormInput
           type="input"
           placeholder="Введите ФИО"
@@ -107,8 +110,10 @@ export const CartFormSecond: React.FC = () => {
         />
       </div>
 
-      <div className="flex w-full flex-col items-start gap-3">
-        <label className="text-xs font-bold text-black">Способ связи</label>
+      <div className="flex w-full flex-col items-start gap-2 sm:gap-3">
+        <label className="text-sm font-bold text-black sm:text-xs">
+          Способ связи
+        </label>
         <Controller
           name="contact_preferences"
           control={control}
@@ -127,8 +132,8 @@ export const CartFormSecond: React.FC = () => {
         />
       </div>
 
-      <div className="flex w-full flex-col items-start gap-3">
-        <label className="text-xs font-bold text-black">
+      <div className="flex w-full flex-col items-start gap-2 sm:gap-3">
+        <label className="text-sm font-bold text-black sm:text-xs">
           {watchedFields.contact_preferences === 'phone_call' ||
           watchedFields.contact_preferences === 'whatsapp'
             ? 'Номер телефона'
@@ -154,8 +159,10 @@ export const CartFormSecond: React.FC = () => {
         )}
       </div>
 
-      <div className="flex w-full flex-col items-start gap-3">
-        <label className="text-xs font-bold text-black">E-mail</label>
+      <div className="flex w-full flex-col items-start gap-2 sm:gap-3">
+        <label className="text-sm font-bold text-black sm:text-xs">
+          E-mail
+        </label>
         <FormInput
           type="email"
           placeholder="Введите E-mail"

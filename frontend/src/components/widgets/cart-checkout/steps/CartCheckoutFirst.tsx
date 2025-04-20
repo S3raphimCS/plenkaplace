@@ -23,10 +23,10 @@ export const CartCheckoutFirst: React.FC<CartCheckoutFirstProps> = ({
   }, [cartItems, dispatch]);
 
   return (
-    <div className="flex w-full flex-col items-center py-8 px-4">
-      <div className="flex flex-col lg:flex-row w-full justify-center gap-y-10 lg:gap-x-16 py-10">
-        <div className="flex flex-col w-full max-w-2xl">
-          <div className="hidden md:flex w-full items-start justify-between border-b pb-6">
+    <div className="flex w-full flex-col items-center px-2 py-6 sm:px-4 sm:py-8">
+      <div className="flex w-full max-w-7xl flex-col justify-center gap-y-10 lg:flex-row lg:gap-x-16">
+        <div className="flex w-full max-w-2xl flex-col">
+          <div className="hidden w-full items-start justify-between border-b pb-4 md:flex">
             <div className="text-black-900 font-text">Товар</div>
             <div className="flex w-[322px] items-center justify-between">
               <div className="text-black-900 font-text">Количество</div>

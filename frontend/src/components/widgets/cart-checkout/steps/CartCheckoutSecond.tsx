@@ -61,8 +61,8 @@ export const CartCheckoutSecond: React.FC<CartCheckoutSecondProps> = ({
     { label: 'Промежуточный итог', value: `${order.total_price} ₽` },
     //@ts-expect-error: discount_value non part of Order
     ...(order.discount_value
-       //@ts-expect-error: discount_value non part of Order
-      ? [{ label: 'Скидка', value: `-${order.discount_value} ₽` }]
+      ? //@ts-expect-error: discount_value non part of Order
+        [{ label: 'Скидка', value: `-${order.discount_value} ₽` }]
       : []),
     {
       label: 'Итог',
@@ -73,11 +73,11 @@ export const CartCheckoutSecond: React.FC<CartCheckoutSecondProps> = ({
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row items-start gap-y-10 lg:gap-x-16 px-4 py-10">
-      <div className="flex flex-col items-start gap-6 w-full lg:max-w-2xl">
+    <div className="box-border flex w-full flex-col-reverse items-start gap-y-10 overflow-hidden px-4 py-6 sm:w-auto sm:flex-row sm:gap-x-6 sm:px-6 sm:py-8 md:px-10 md:py-10">
+      <div className="flex w-full max-w-full flex-col items-start gap-6 lg:max-w-2xl">
         <Card className="w-full text-black">
-          <CardContent className="p-6 pt-10">
-            <h2 className="mb-6 mt-[-1.00px] w-fit text-2xl">
+          <CardContent className="p-8 pt-6 sm:p-6 sm:pt-10">
+            <h2 className="mb-6 mt-[-1.00px] break-words text-xl sm:text-2xl">
               Контактная информация
             </h2>
             <CartFormSecond />
@@ -86,16 +86,18 @@ export const CartCheckoutSecond: React.FC<CartCheckoutSecondProps> = ({
         <DeliveryAddress />
         <CouponSection />
         <Button
-          className="w-full lg:w-[643px] rounded-lg px-10 py-3 text-center"
+          className="w-full rounded-lg px-6 py-3 text-center text-sm sm:text-base"
           onClick={handleOrderSubmit}
         >
           Создать заказ
         </Button>
       </div>
 
-      <Card className="w-full lg:w-[413px] rounded-md bg-white text-black">
-        <CardContent className="p-6 pt-4">
-          <h2 className="mb-4 text-[28px] font-medium">Заказ</h2>
+      <Card className="w-full max-w-full rounded-md bg-white text-black sm:max-w-full lg:max-w-[413px]">
+        <CardContent className="p-8 pt-4 sm:p-6">
+          <h2 className="mb-4 break-words text-xl font-medium sm:text-[28px]">
+            Заказ
+          </h2>
           {cartItems.map((item) => (
             <CartItemShort key={item.id} item={item} />
           ))}

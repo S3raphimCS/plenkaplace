@@ -35,48 +35,43 @@ export const CartItem: React.FC<{ item: CartItemModel }> = ({ item }) => {
   };
 
   const handleIncrease = () => {
-    if (item.product_type?.title === 'Фотоаппарат') {
-      return;
-    }
+    if (item.product_type?.title === 'Фотоаппарат') return;
     dispatch(updateQuantity({ id: item.id!, quantity: item.quantity + 1 }));
     toast.success(`Количество товара "${item.title}" увеличено на 1`);
   };
 
   return (
-    <div className="flex w-[643px] items-center justify-between border-b px-0 py-6">
-      <div className="flex items-start gap-2.5">
-        <div className="flex w-[316px] items-center gap-4">
-          <div className="relative h-24 w-20">
-            <Link href={item.slug!}>
-              <Image
-                src={item.images?.[0]?.image || '/product/default-product.png'}
-                alt={item.title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded"
-              />
-            </Link>
-          </div>
-          <div className="flex flex-1 items-start gap-4">
-            <div className="flex w-[210px] flex-col items-start justify-center gap-2">
-              <div className="self-stretch">
-                <Link href={item.slug!}>{item.title} </Link>
-              </div>
-              <Button
-                variant="ghost"
-                className="text-neutral-04100 flex h-auto items-center gap-1 p-0 hover:bg-transparent"
-                size="sm"
-                onClick={handleRemove}
-              >
-                <Trash2 className="h-6 w-6" />
-                <span className="font-caption-1-semi">Удалить</span>
-              </Button>
-            </div>
-          </div>
+    <div className="flex w-full flex-col items-start justify-between gap-4 border-b py-4 sm:flex-row sm:items-center">
+      <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-center">
+        <div className="relative h-24 w-20 flex-shrink-0">
+          <Link href={item.slug!}>
+            <Image
+              src={item.images?.[0]?.image || '/product/default-product.png'}
+              alt={item.title}
+              layout="fill"
+              objectFit="cover"
+              className="rounded"
+            />
+          </Link>
+        </div>
+        <div className="flex flex-col justify-between">
+          <Link href={item.slug!} className="text-sm font-medium sm:text-base">
+            {item.title}
+          </Link>
+          <Button
+            variant="ghost"
+            className="text-neutral-04100 flex h-auto items-center gap-1 p-0 text-xs hover:bg-transparent"
+            size="sm"
+            onClick={handleRemove}
+          >
+            <Trash2 className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span>Удалить</span>
+          </Button>
         </div>
       </div>
-      <div className="flex w-[328px] items-center justify-between">
-        <div className="flex h-8 w-20 items-center justify-between rounded border px-2 py-3">
+
+      <div className="flex w-full flex-col items-start justify-between gap-2 sm:w-auto sm:flex-row sm:items-center sm:justify-end sm:gap-4">
+        <div className="flex h-8 min-w-[80px] items-center justify-between rounded border px-2">
           <Button
             variant="ghost"
             className="h-auto p-0"
@@ -85,7 +80,7 @@ export const CartItem: React.FC<{ item: CartItemModel }> = ({ item }) => {
           >
             <Minus className="h-4 w-4" />
           </Button>
-          <span className="font-text-12px-semibold text-black-900 text-center">
+          <span className="text-center text-sm text-black">
             {item.quantity}
           </span>
           <Button
@@ -97,10 +92,10 @@ export const CartItem: React.FC<{ item: CartItemModel }> = ({ item }) => {
             <Plus className="h-4 w-4" />
           </Button>
         </div>
-        <Price className="font-text text-black-900 text-right">
+        <Price className="text-sm text-black sm:text-base">
           {Number(item.price)}
         </Price>
-        <Price className="font-text text-black-900 text-right">
+        <Price className="text-sm text-black sm:text-base">
           {Number(item.total)}
         </Price>
       </div>

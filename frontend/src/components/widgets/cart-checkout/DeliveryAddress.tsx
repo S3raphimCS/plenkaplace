@@ -74,12 +74,14 @@ export const DeliveryAddress: React.FC = () => {
   }, [watchedFields, dispatch]);
 
   return (
-    <Card className="w-[643px] text-black">
-      <CardContent className="p-6 pt-10">
-        <h2 className="mb-6 mt-[-1.00px] w-fit text-2xl">Адрес доставки</h2>
+    <Card className="w-full text-black sm:w-full lg:w-[643px]">
+      <CardContent className="p-8 pt-8 sm:p-6 sm:pt-10">
+        <h2 className="mb-6 mt-[-1.00px] w-fit text-xl sm:text-2xl">
+          Адрес доставки
+        </h2>
 
-        <div className="flex w-full flex-col items-start gap-3">
-          <label className="font-hairline-2 mt-[-1.00px] w-fit">
+        <div className="flex w-full flex-col items-start gap-2 sm:gap-3">
+          <label className="font-hairline-2 mt-[-1.00px] w-fit text-sm sm:text-base">
             Способ доставки
           </label>
           {loading ? (
@@ -109,29 +111,31 @@ export const DeliveryAddress: React.FC = () => {
         </div>
 
         {watchedFields.deliveryMethod !== 'selfPickup' && (
-          <div className="mt-4 flex flex-col gap-3">
-            <div className="flex w-full flex-col items-start gap-3">
-              <label className="font-hairline-2 mt-[-1.00px] w-fit">
+          <div className="mt-4 flex flex-col gap-4 sm:gap-6">
+            <div className="flex w-full flex-col items-start gap-2 sm:gap-3">
+              <label className="font-hairline-2 mt-[-1.00px] w-fit text-sm sm:text-base">
                 Адрес
               </label>
               <Input
-                className="h-10 bg-white"
+                className="h-10 w-full bg-white"
                 placeholder="Введите ваш адрес"
                 {...register('address', {
                   required: 'Адрес обязателен для заполнения',
                 })}
               />
               {errors.address && (
-                <span className="text-red-500">{errors.address.message}</span>
+                <span className="text-sm text-red-500">
+                  {errors.address.message}
+                </span>
               )}
             </div>
 
-            <div className="flex w-full flex-col items-start gap-3">
-              <label className="font-hairline-2 mt-[-1.00px] w-fit">
+            <div className="flex w-full flex-col items-start gap-2 sm:gap-3">
+              <label className="font-hairline-2 mt-[-1.00px] w-fit text-sm sm:text-base">
                 Комментарий
               </label>
               <Input
-                className="h-10 bg-white"
+                className="h-10 w-full bg-white"
                 placeholder="Комментарий к доставке"
                 {...register('comment')}
               />
