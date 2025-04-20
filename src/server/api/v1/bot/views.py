@@ -11,7 +11,6 @@ from server.bot.main import client_bot
 class ClientBotWebHookView(APIView):
     """Класс-вью обработки вебхука для бота."""
 
-    # todo test
     def post(self, request, *args, **kwargs):
         """Принимает хук запросы."""
         json_string = request.body.decode('utf-8')
