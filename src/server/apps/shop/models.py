@@ -125,30 +125,11 @@ class Order(models.Model):
     def get_total_price(self):
         return sum(item.quantity * item.product.price for item in self.items.all()) - self.discount_amount
 
-    def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
-    ):
-        promo = self.promo_code
-        discount_value = 0
-        if promo:
-            if promo.discount_type == PromoCodeTypeChoices.fixed_amount:
-                discount_value = promo.discount_value
-            else:
-                discount_value = int(Decimal(self.total_price) / 100 * promo.discount_value)
-            if promo.max_discount:
-                if discount_value > promo.max_discount:
-                    discount_value = promo.max_discount
-        if discount_value >= self.total_price:
-            self.discount_amount = 0
-        else:
-            self.discount_amount = discount_value
-        super().save(force_insert, force_update)
+    total_price = property(get_total_price)
+    get_total_price.short_description = "Итоговая сумма"
 
     def __str__(self):
         return f"{self.id} - {self.first_name}, {self.contact_data}, {self.total_price} руб."
-
-    total_price = property(get_total_price)
-    get_total_price.short_description = "Итоговая сумма"
 
     class Meta:
         verbose_name = 'Заказ'
