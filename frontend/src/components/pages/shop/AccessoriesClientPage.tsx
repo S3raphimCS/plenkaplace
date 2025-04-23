@@ -27,6 +27,7 @@ export default function AccessoriesClientPage() {
   });
   const [brandFilter, setBrandFilter] = useState<number[]>([]);
   const [sortBy, setSortBy] = useState<string>('-created_at');
+  const [isPreorderOnly, setIsPreorderOnly] = useState(false);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -38,6 +39,7 @@ export default function AccessoriesClientPage() {
           price_max: priceFilter.max,
           brand: brandFilter.length ? brandFilter.join(',') : undefined,
           ordering: sortBy,
+          is_preorder: isPreorderOnly ? true : undefined,
         });
 
         setProducts(response.data.results);
@@ -59,7 +61,7 @@ export default function AccessoriesClientPage() {
 
     fetchProducts();
     fetchBrands();
-  }, [priceFilter, brandFilter, sortBy]);
+  }, [priceFilter, brandFilter, sortBy, isPreorderOnly]);
 
   const handleSortChange = (sortOption: string) => {
     setSortBy(sortOption);
@@ -102,6 +104,8 @@ export default function AccessoriesClientPage() {
         <div className="flex flex-col gap-6 px-4 py-6 md:flex-row md:px-8 lg:px-40 lg:py-[60px]">
           <aside className="w-full md:w-[25%] lg:w-[30%]">
             <FilterSidebarSection
+              isPreorderOnly={isPreorderOnly}
+              onPreorderChange={setIsPreorderOnly}
               sections={sections}
               selectedBrands={brandFilter}
               onResetFilters={() => {

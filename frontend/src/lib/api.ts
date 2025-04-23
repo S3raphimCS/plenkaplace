@@ -966,6 +966,7 @@ export class Api<
         price?: string;
         price_min?: number;
         price_max?: number;
+        is_preorder?: boolean;
         /** brand */
         brand?: string;
         /** Which field to use when ordering the results. */

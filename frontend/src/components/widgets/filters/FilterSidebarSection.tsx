@@ -24,17 +24,21 @@ export interface FilterSection {
 }
 
 interface FilterSidebarSectionProps {
+  isPreorderOnly: boolean;
   sections: FilterSection[];
   selectedBrands: number[];
   onResetFilters: () => void;
+  onPreorderChange: (checked: boolean) => void;
   onFilterChange?: (type: string, value: { min: number; max: number }) => void;
   onBrandFilterChange: (brands: number[]) => void;
 }
 
 export const FilterSidebarSection: React.FC<FilterSidebarSectionProps> = ({
+  isPreorderOnly,
   sections,
   selectedBrands,
   onResetFilters,
+  onPreorderChange,
   onFilterChange,
   onBrandFilterChange,
 }) => {
@@ -77,6 +81,20 @@ export const FilterSidebarSection: React.FC<FilterSidebarSectionProps> = ({
       </header>
 
       <div className="flex flex-col gap-8">
+        <div className="flex items-center gap-2">
+          <Checkbox
+            id="preorder"
+            checked={isPreorderOnly}
+            className="bg-neutrals-8 border-neutral-04100 h-6 w-6 rounded border-[1.5px]"
+            onCheckedChange={(checked) => onPreorderChange(Boolean(checked))}
+          />
+          <label
+            htmlFor="preorder"
+            className="font-sub-text text-black-500 whitespace-nowrap"
+          >
+            Под заказ
+          </label>
+        </div>
         {sections.map((section, sectionIndex) => (
           <Accordion
             key={sectionIndex}
