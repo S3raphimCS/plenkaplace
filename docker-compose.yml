@@ -24,21 +24,19 @@ services:
     restart: unless-stopped
     expose:
       - "3000"
-#    volumes:
-#      - images:/app/public
 
-#  nginx:
-#    build:
-#      context: .
-#      dockerfile: ./deploy/nginx.Dockerfile
-#    restart: always
-#    volumes:
-#      - ./media_volume:/project/server/media/
-#      - ./static_volume:/project/server/static/
-#    env_file:
-#      - ./src/.env
-#    expose:
-#      - "80"
+  nginx:
+    build:
+      context: .
+      dockerfile: ./deploy/nginx.Dockerfile
+    restart: always
+    volumes:
+      - ./media_volume:/project/server/media/
+      - ./static_volume:/project/server/static/
+    env_file:
+      - ./src/.env
+    expose:
+      - "80"
 
   proxy-manager:
     image: jc21/nginx-proxy-manager:latest
