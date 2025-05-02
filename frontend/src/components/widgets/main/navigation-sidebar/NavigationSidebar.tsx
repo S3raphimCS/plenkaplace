@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/shared/ui/button';
 import {
   Sheet,
@@ -17,10 +18,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/shared/ui/accordion';
+import { useState } from 'react';
 
 export const NavigationSidebar = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setOpen(false);
+  };
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
           variant="ghost"
@@ -44,30 +52,35 @@ export const NavigationSidebar = () => {
                 <Link
                   href={paths.cameras}
                   className="text-lg text-accent hover:underline"
+                  onClick={handleLinkClick}
                 >
                   Фотоаппараты
                 </Link>
                 <Link
                   href={paths.film}
                   className="text-lg text-accent hover:underline"
+                  onClick={handleLinkClick}
                 >
                   Плёнка
                 </Link>
                 <Link
                   href={paths.accessories}
                   className="text-lg text-accent hover:underline"
+                  onClick={handleLinkClick}
                 >
                   Аксессуары
                 </Link>
                 <Link
                   href={paths.sets}
                   className="text-lg text-accent hover:underline"
+                  onClick={handleLinkClick}
                 >
                   Наборы
                 </Link>
                 <Link
                   href={paths.certificate}
                   className="text-lg text-accent hover:underline"
+                  onClick={handleLinkClick}
                 >
                   Подарочные сертификаты
                 </Link>
@@ -82,12 +95,14 @@ export const NavigationSidebar = () => {
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 pl-4 pt-2">
                 <Link
+                  onClick={handleLinkClick}
                   href={paths.development}
                   className="text-lg text-accent hover:underline"
                 >
                   Проявка и оцифровка плёнки
                 </Link>
                 <Link
+                  onClick={handleLinkClick}
                   href={paths.printing}
                   className="text-lg text-accent hover:underline"
                 >
@@ -98,24 +113,28 @@ export const NavigationSidebar = () => {
           </Accordion>
 
           <Link
+            onClick={handleLinkClick}
             href={paths.club}
             className="text-lg text-accent hover:underline"
           >
-            Клуб Plenka Palace
+            Клуб Plenka Place
           </Link>
           <Link
+            onClick={handleLinkClick}
             href={paths.delivery}
             className="text-lg text-accent hover:underline"
           >
             Доставка
           </Link>
           <Link
+            onClick={handleLinkClick}
             href={paths.warranty}
             className="text-lg text-accent hover:underline"
           >
             Гарантия
           </Link>
           <Link
+            onClick={handleLinkClick}
             href={paths.blog}
             className="text-lg text-accent hover:underline"
           >
@@ -129,18 +148,21 @@ export const NavigationSidebar = () => {
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 pl-4 pt-2">
                 <Link
+                  onClick={handleLinkClick}
                   href={paths.contacts}
                   className="text-lg text-accent hover:underline"
                 >
                   Контакты
                 </Link>
                 <Link
+                  onClick={handleLinkClick}
                   href={paths.privacy}
                   className="text-lg text-accent hover:underline"
                 >
                   Политика конфиденциальности
                 </Link>
                 <Link
+                  onClick={handleLinkClick}
                   href={paths.terms}
                   className="text-lg text-accent hover:underline"
                 >
@@ -152,13 +174,14 @@ export const NavigationSidebar = () => {
         </nav>
 
         <SheetFooter className="mt-auto flex flex-col items-center gap-4 border-t pt-4">
-          <Link href={paths.telegram_business_account}>
+          <Link href={paths.telegram_public}>
             <p className="text-xl font-bold hover:text-blue-500">
-              @plenkamagazine
+              @plenkaplace
             </p>
           </Link>
           <div className="flex gap-6">
             <Link
+              onClick={handleLinkClick}
               href={paths.telegram}
               target="_blank"
               rel="noopener noreferrer"
@@ -166,6 +189,7 @@ export const NavigationSidebar = () => {
               <FaTelegram className="text-3xl text-accent hover:text-blue-500" />
             </Link>
             <Link
+              onClick={handleLinkClick}
               href={paths.instagram}
               target="_blank"
               rel="noopener noreferrer"

@@ -29,7 +29,7 @@ export const paths = {
   telephone: 'tel:+7 (909) 842 58-32',
   telegram: 'https://t.me/plenka_mag',
   telegram_public: 'https://t.me/plenkaplace',
-  instagram: 'https://instagram.com/plenka_place',
+  instagram: 'https://instagram.com/plenkaplace',
   telegram_business_account: 'https://t.me/plenkamagazine',
 
   blog_news: (id: Id): string => `/blog/${id}`,
