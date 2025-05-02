@@ -64,7 +64,7 @@ export default function PrintingPage() {
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/catalog.png"
+        imageSrc="/source/catalog.png"
         title="Печать"
         description="Печать, которая сохраняет эмоции и делает их осязаемыми"
         imageClassName="brightness-50"

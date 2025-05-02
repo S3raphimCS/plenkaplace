@@ -110,7 +110,7 @@ export default function SetsShopClientPage() {
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/catalog.png"
+        imageSrc="/source/catalog.png"
         title="Наборы"
         description="Все необходимое в одном комплекте — удобно, выгодно, стильно"
         imageClassName="brightness-50"

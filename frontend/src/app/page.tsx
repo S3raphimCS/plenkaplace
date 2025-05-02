@@ -8,7 +8,7 @@ import { ReviewsSection } from '@/components/widgets/reviews-section';
 export default function Home() {
   return (
     <main className="mb-6 flex flex-col gap-12">
-      <MainBanner imageSrc={'/banner/main_banner.png'} />
+      <MainBanner imageSrc={'/source/main.png'} />
       <PageWrapper>
         <CatalogGridSection />
         <NewProductsWidget />

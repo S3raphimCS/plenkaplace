@@ -13,7 +13,7 @@ export default function BlogPage() {
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/blog.png"
+        imageSrc="/source/blog.png"
         title="Блог"
         description="Погружайся в мир фотоискусства вместе с нашими экспертами"
         imageClassName="brightness-50"

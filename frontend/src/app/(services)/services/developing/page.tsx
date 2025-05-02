@@ -145,7 +145,7 @@ export default function DevelopingPage() {
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/catalog.png"
+        imageSrc="/source/catalog.png"
         title="Проявка и оцифровка плёнки"
         description="Качественная обработка пленки и цифровой архив твоих лучших кадров"
         imageClassName="brightness-50"

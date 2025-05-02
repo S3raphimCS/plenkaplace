@@ -91,7 +91,7 @@ export default function AccessoriesClientPage() {
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/catalog.png"
+        imageSrc="/source/catalog.png"
         title="Аксессуары"
         description="Все, что нужно для идеального кадра — аксессуары, которые вдохновляют"
         imageClassName="brightness-50"

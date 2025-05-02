@@ -11,7 +11,7 @@ export default function PlenkaClubPage() {
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/catalog.png"
+        imageSrc="/source/catalog.png"
         title="Клуб Plenka Place"
         description="Скидки, тусовки и плёночная движуха!"
         imageClassName="brightness-50"

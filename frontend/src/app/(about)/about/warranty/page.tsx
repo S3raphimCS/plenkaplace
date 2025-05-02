@@ -13,7 +13,7 @@ export default function WarrantyPage() {
     <main className="my-4 flex flex-col gap-4 md:my-6 md:gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/catalog.png"
+        imageSrc="/source/catalog.png"
         title="Гарантии"
         description="Ваше доверие — наша главная ценность и обязательство"
         imageClassName="brightness-50"

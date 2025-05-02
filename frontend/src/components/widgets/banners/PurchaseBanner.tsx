@@ -14,7 +14,7 @@ export const PurchaseBanner: React.FC = () => {
           fill
           className="h-[300px] w-full object-cover md:h-[532px]"
           alt="Promotional banner"
-          src="/banner/purchase_banner.png"
+          src="/source/purchase.png"
         />
       </div>
 

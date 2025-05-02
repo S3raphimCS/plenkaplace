@@ -87,7 +87,7 @@ export default function CertificateShopClientPage() {
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/catalog.png"
+        imageSrc="/source/catalog.png"
         title="Подарочные сертификаты"
         description="Выберите лучший сертификат для себя"
         imageClassName="brightness-50"

@@ -14,7 +14,7 @@ export default function DeliveryPage() {
     <main className="my-4 flex flex-col gap-4 md:my-6 md:gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/catalog.png"
+        imageSrc="/source/catalog.png"
         title="Доставка"
         description="Доставляем с заботой и вниманием к каждой детали"
         imageClassName="brightness-50"

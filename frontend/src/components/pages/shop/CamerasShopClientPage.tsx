@@ -92,7 +92,7 @@ export default function CamerasShopClientPage() {
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner
         className="text-white"
-        imageSrc="/banner/cameras.png"
+        imageSrc="/source/cameras.png"
         title="Фотоаппараты"
         description="Выберите лучшую камеру для себя"
         imageClassName="brightness-50"
