@@ -22,14 +22,13 @@ SECRET_KEY = config("SECRET_KEY", default="set_me_in_prod")
 
 DEBUG = config("DEBUG", default=True)
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000',
-#     'http://localhost',
-#     "http://plenka-front"
-# ]
-
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'https://localhost:3000',
+    'http://localhost',
+    'https://plenkaplace.ru',
+    'http://plenkaplace.ru',
+    'https://plenka-front',
+]
 
 CORS_ALLOW_METHODS = (
     "DELETE",
@@ -53,6 +52,9 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost",
     "https://localhost",
     "http://plenka-front",
+    "https://plenka-front",
+    "http://plenkaplace.ru",
+    "https://plenkaplace.ru",
     "http://localhost:8000",
     "http://localhost:3000"
 ]
