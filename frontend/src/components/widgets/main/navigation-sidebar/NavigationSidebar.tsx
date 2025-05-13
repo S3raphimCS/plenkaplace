@@ -182,7 +182,7 @@ export const NavigationSidebar = () => {
           <div className="flex gap-6">
             <Link
               onClick={handleLinkClick}
-              href={paths.telegram}
+              href={paths.telegram_public}
               target="_blank"
               rel="noopener noreferrer"
             >
