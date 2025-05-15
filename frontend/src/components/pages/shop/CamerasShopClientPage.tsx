@@ -55,9 +55,11 @@ export default function CamerasShopClientPage() {
     async function fetchBrands() {
       try {
         const response = await api.shop.shopBrandsList();
-        setBrands(response.data.results);
+        setBrands(response.data);
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     fetchProducts();
@@ -87,7 +89,6 @@ export default function CamerasShopClientPage() {
       items: brands,
     },
   ];
-
   return (
     <main className="my-6 flex flex-col gap-6">
       <HeaderBanner

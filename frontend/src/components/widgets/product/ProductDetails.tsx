@@ -68,7 +68,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
           <CarouselNext className="right-4 h-10 w-10 rounded-full bg-white md:right-8" />
         </Carousel>
 
-        <div className="flex w-full items-start gap-4 overflow-x-auto">
+        <div className="flex w-full items-start gap-4 overflow-x-hidden">
           {thumbnails.map((thumbnail, index) => (
             <div
               key={thumbnail.id}
@@ -98,7 +98,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
                 Под заказ
               </Badge>
             )}
-            {product.description}
+            <div dangerouslySetInnerHTML={{ __html: product.description }} />
           </div>
 
           <div className="flex items-center gap-3">

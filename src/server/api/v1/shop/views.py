@@ -144,7 +144,7 @@ class PromoCodeViewSet(ViewSet):
 class BrandViewSet(mixins.ListModelMixin, GenericViewSet):
     """Вьюсет просмотра списка брендов."""
 
-    pagination_class = StandardPagePagination
+    # pagination_class = StandardPagePagination
     queryset = Brand.objects.all()
     serializer_class = BrandSerializer
 

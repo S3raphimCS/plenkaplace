@@ -172,7 +172,6 @@ export interface Brand {
   /**
    * Название
    * @minLength 1
-   * @maxLength 100
    */
   title: string;
 }
@@ -784,33 +783,15 @@ export class Api<
   };
   shop = {
     /**
-     * @description Вьюсет просмотра списка брендов.
+     * @description Вьюсет про  смотра списка брендов.
      *
      * @tags shop
      * @name ShopBrandsList
      * @request GET:/shop/brands/
      * @secure
      */
-    shopBrandsList: (
-      query?: {
-        /** A page number within the paginated result set. */
-        page?: number;
-        /** Number of results to return per page. */
-        count?: number;
-      },
-      params: RequestParams = {}
-    ) =>
-      this.request<
-        {
-          count: number;
-          /** @format uri */
-          next?: string | null;
-          /** @format uri */
-          previous?: string | null;
-          results: Brand[];
-        },
-        any
-      >({
+    shopBrandsList: (query?: {}, params: RequestParams = {}) =>
+      this.request<Brand[], any>({
         path: `/shop/brands/`,
         method: 'GET',
         query: query,

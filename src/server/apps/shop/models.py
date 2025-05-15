@@ -1,5 +1,6 @@
 from django.db import models
 from decimal import Decimal
+from ckeditor.fields import RichTextField
 
 from server.apps.shop.enums import (
     ContactPreferenceChoices,
@@ -69,7 +70,7 @@ class Product(models.Model):
 
     title = models.CharField(max_length=100, verbose_name='Название')
     slug = models.SlugField(unique=True, blank=True, verbose_name='Slug')
-    description = models.TextField(verbose_name='Описание')
+    description = RichTextField(verbose_name='Описание')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     product_type = models.ForeignKey(ProductType, on_delete=models.CASCADE, verbose_name='Тип товара')
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, verbose_name='Бренд', null=True, blank=True)

@@ -54,11 +54,12 @@ export const ContactSection: React.FC = () => {
 
       <ContactCards cards={contactCards} />
 
-      <div className="flex w-full gap-10">
-        <div className="w-1/2">
+      <div className="flex w-full flex-col gap-10 md:flex-row">
+        <div className="w-full md:w-1/2">
           <ContactForm fields={formFields} />
         </div>
-        <div className="w-1/2">
+
+        <div className="w-full md:w-1/2">
           <MapWrapper>
             <LazyMapSection />
           </MapWrapper>

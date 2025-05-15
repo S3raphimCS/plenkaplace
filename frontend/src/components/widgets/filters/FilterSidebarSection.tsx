@@ -85,7 +85,7 @@ export const FilterSidebarSection: React.FC<FilterSidebarSectionProps> = ({
           <Checkbox
             id="preorder"
             checked={isPreorderOnly}
-            className="bg-neutrals-8 border-neutral-04100 h-6 w-6 rounded border-[1.5px]"
+            className="h-6 w-6 rounded border-[1.5px]"
             onCheckedChange={(checked) => onPreorderChange(Boolean(checked))}
           />
           <label
@@ -117,7 +117,7 @@ export const FilterSidebarSection: React.FC<FilterSidebarSectionProps> = ({
                         <Checkbox
                           id={`brand-${brand.id}`}
                           checked={selectedBrands.includes(brand.id!)}
-                          className="bg-neutrals-8 border-neutral-04100 h-6 w-6 rounded border-[1.5px]"
+                          className="h-6 w-6 rounded border-[1.5px]"
                           onCheckedChange={() => handleBrandChange(brand.id!)}
                         />
                         <span className="font-sub-text text-black-500 whitespace-nowrap">
@@ -133,7 +133,7 @@ export const FilterSidebarSection: React.FC<FilterSidebarSectionProps> = ({
                         <Checkbox
                           id={`${section.type}-${index}`}
                           checked={selectedCharacteristics.includes(item)}
-                          className="bg-neutrals-8 border-neutral-04100 h-6 w-6 rounded border-[1.5px]"
+                          className="h-6 w-6 rounded border-[1.5px]"
                           onCheckedChange={() =>
                             handleCharacteristicChange(item)
                           }
@@ -163,7 +163,7 @@ export const FilterSidebarSection: React.FC<FilterSidebarSectionProps> = ({
                               selectedPrice?.min === option.value?.min &&
                               selectedPrice?.max === option.value?.max
                             }
-                            className={`h-6 w-6 rounded ${selectedPrice?.min === option.value?.min && selectedPrice?.max === option.value?.max ? 'bg-neutral-07100' : 'bg-neutrals-8 border-neutral-04100 border-[1.5px]'}`}
+                            className={`h-6 w-6 rounded ${selectedPrice?.min === option.value?.min && selectedPrice?.max === option.value?.max ? 'bg-neutral-07100' : 'border-[1.5px]'}`}
                             onCheckedChange={() =>
                               handleCheckboxChange(section.type, option)
                             }

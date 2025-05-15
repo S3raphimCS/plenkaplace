@@ -32,7 +32,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-100 bg-opacity-90 px-2 py-4 sm:px-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gray-100 bg-opacity-90 px-2 py-4 sm:px-4">
       <div className="relative flex max-h-[90vh] w-full max-w-[95vw] flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white p-2 shadow-lg sm:max-w-[90vw] sm:p-4">
         <div className="relative flex max-h-[70vh] w-full items-center justify-center">
           <FallbackProductImage
@@ -69,7 +69,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({
           Изображение {currentIndex + 1} из {images.length}
         </div>
 
-        <div className="flex w-full max-w-full items-center justify-center gap-2 overflow-x-auto px-2 pb-2 sm:pb-4">
+        <div className="flex w-full max-w-full items-center justify-center gap-2 overflow-hidden overflow-x-auto px-2 pb-2 sm:pb-4">
           {images.map((image, index) => (
             <div
               key={index}

@@ -11,7 +11,9 @@ export default function ContactsClientPage() {
       <PageWrapper>
         <ContactsBreadcrumb />
         <div className="mt-6 flex flex-col items-start gap-6">
-          <h1 className="text-6xl">PlenkaPlace — мир винтажной фотографии</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl">
+            PlenkaPlace — мир винтажной фотографии
+          </h1>
           <p className="text-lg">
             Добро пожаловать в PlenkaPlace — уникальный магазин, где оживает
             история фотографии! Мы предлагаем широкий выбор винтажных

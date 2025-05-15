@@ -54,7 +54,7 @@ export default function AccessoriesClientPage() {
     async function fetchBrands() {
       try {
         const response = await api.shop.shopBrandsList();
-        setBrands(response.data.results);
+        setBrands(response.data);
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {}
     }
